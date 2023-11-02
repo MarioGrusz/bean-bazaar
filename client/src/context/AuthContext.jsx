@@ -10,10 +10,11 @@ import {
 } from 'firebase/auth';
 import { auth } from '../config/firebase.config';
 import { createUserInDatabse } from '../api/apiUser';
+import { getSessionCookie, logoutSession } from '../api/apiCookie';
+
 
 
 const AuthContext = createContext();
-
 
 export const AuthContextProvider = ({ children }) => {
 
@@ -65,22 +66,18 @@ export const AuthContextProvider = ({ children }) => {
     return sendPasswordResetEmail(auth, email)
   }
 
-  //TOKEN https://www.phind.com/search?cache=kdiy4jbicvd9ro0i019d8z0k
-  //REFRESH TOKEN https://www.phind.com/search?cache=h3o04c7ladc22nwtswdbg74c
-
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
+
         createUserInDatabse(currentUser);
 
         currentUser.getIdToken().then((idToken) => {
-          setUser(currentUser);
-          console.log(currentUser)
-          setToken(idToken);
+          getSessionCookie(idToken)
         });
+
       } else {
-        setUser(null);
-        setToken(null);
+        logoutSession()
       }
     });
 

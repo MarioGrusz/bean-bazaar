@@ -25,9 +25,9 @@ import {
     deleteWishlistItemController 
 } from '../controllers/wishlist.controller.js';
 
-import authenticateToken from '../middleware/auth.middleware.js';
+import authenticateSession from '../middleware/auth.middleware.js';
 const router = express.Router();
-router.use(authenticateToken);
+router.use(authenticateSession);
 
 router.route("/").get(getWishlistItemsController);
 router.route("/add").post(addItemToWishlistController);

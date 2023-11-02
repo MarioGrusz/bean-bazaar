@@ -24,6 +24,8 @@ const addItemToWishlistController = async (req, res) => {
 const getWishlistItemsController = async (req, res) => {
     try{
         const uid = req.uid;
+
+        console.log('wishlistController', uid)
         const wishlistItems =  await getWishlistItems(uid);
         console.log('ControllerWishlist', wishlistItems)
         res.status(200).json({ message: 'Wishlist items successfully retrived', data: wishlistItems});

@@ -49,13 +49,13 @@ const Home = () => {
     }, [search, page, origin, roastery, sort, isNew, refetchCoffeeItems]);
     
        
-    const { data: wishlistData, isLoading: isLoadingWishlistItems } = useGetWishlistItems(token);
+    //const { data: wishlistData, isLoading: isLoadingWishlistItems } = useGetWishlistItems(token);
 
 
     const coffeeItems = data?.data.docs || [];
-    const wishlistItems = wishlistData?.data || [];
+    //const wishlistItems = wishlistData?.data || [];
 
-    console.log('Wishlist', wishlistItems)
+    //console.log('Wishlist', wishlistItems)
 
    
 
@@ -68,7 +68,7 @@ const Home = () => {
 
         return <ItemCard 
             products={coffeeItems} 
-            wishlistItems={wishlistItems} 
+            // wishlistItems={wishlistItems} 
             heartFill={heartFill}
             setHeartFill={setHeartFill}
         />
