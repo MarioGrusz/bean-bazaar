@@ -1,0 +1,35 @@
+.add-to-wishlist {
+  bottom: 5px;
+  right: 5px;
+  z-index: 9;
+  position: absolute;
+}
+
+.add-to-wishlist-btn {
+  background: none;
+  border: none;
+  outline: 0;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+}
+
+i {
+  transition: opacity 0.7s ease 0s;
+  opacity: 0;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+
+i.enabled {
+  opacity: 1;
+  display: inline-block;
+}
+
+.heart-svg {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  fill: none;
+}
