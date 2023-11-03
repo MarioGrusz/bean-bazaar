@@ -19,6 +19,8 @@ import cookieRoute from './routes/cookie.js';
 import { createCoffeeData } from './services/coffeeItem.service.js';
 import errorHandler from './middleware/error.middleware.js';
 
+import attachCsrfToken from './utils/attachCsrfToken.js';
+
 dotenv.config();
 
 const PORT = process.env.PORT || 5000;
@@ -38,6 +40,8 @@ app.use('/api/v1/session', cookieRoute);
 app.use('/api/v1/user', userRoute);
 app.use('/api/v1/data', productRoute);
 app.use('/api/v1/wishlist', wishlistRoute);
+
+app.use(attachCsrfToken('/', 'csrfToken', (Math.random()* 100000000000000000).toString()));
 
 app.use(errorHandler)
 
