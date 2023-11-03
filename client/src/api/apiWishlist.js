@@ -3,6 +3,7 @@ import apiRequest from './helpers/apiRequest';
 
 
 const getWishlistItems = async (token) => {
+    if(!token) return
     return apiRequest(`${BASE_URL}/wishlist`, 'GET', token);
 };
 

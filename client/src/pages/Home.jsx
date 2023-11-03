@@ -11,11 +11,10 @@ import Filters from '../components/Filters/Filters';
 import { UserAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
-//custom query hooks https://www.phind.com/search?cache=khd1trmv0gmtlpn0lfuq1i4d
 
 const Home = () => {
 
-    const { logOut, token } = UserAuth();
+    const { user, logOut, token } = UserAuth();
     const navigate = useNavigate();
 
 
@@ -28,6 +27,10 @@ const Home = () => {
     const [showFilterSidebar, setShowFilterSidebar] = useState(false);
     const [filterCount, setFilterCount] = useState(0);
     const [heartFill, setHeartFill] = useState(false);
+
+
+
+    console.log('homeToken', token)
 
 
     const handleSignout = async (formData) => {
@@ -47,17 +50,15 @@ const Home = () => {
     useEffect(() => {
         refetchCoffeeItems();
     }, [search, page, origin, roastery, sort, isNew, refetchCoffeeItems]);
-    
+
        
-    //const { data: wishlistData, isLoading: isLoadingWishlistItems } = useGetWishlistItems(token);
+    const { data: wishlistData, isLoading: isLoadingWishlistItems } = useGetWishlistItems(token);
 
-
+    //https://www.phind.com/search?cache=np6dx4ef6jyu62xn7zjql2lw
     const coffeeItems = data?.data.docs || [];
-    //const wishlistItems = wishlistData?.data || [];
+    const wishlistItems = wishlistData?.data || [];
 
-    //console.log('Wishlist', wishlistItems)
-
-   
+    console.log('Wishlist', wishlistItems)
 
 
     const renderContent = () => {

@@ -10,7 +10,6 @@ import {
 } from 'firebase/auth';
 import { auth } from '../config/firebase.config';
 import { createUserInDatabse } from '../api/apiUser';
-import { getSessionCookie, logoutSession } from '../api/apiCookie';
 
 
 
@@ -69,15 +68,17 @@ export const AuthContextProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
-
         createUserInDatabse(currentUser);
 
         currentUser.getIdToken().then((idToken) => {
-          getSessionCookie(idToken)
+          setUser(currentUser);
+          console.log(currentUser)
+          setToken(idToken);
+          console.log('idToken', idToken)
         });
-
       } else {
-        logoutSession()
+        setUser(null);
+        setToken(null);
       }
     });
 
