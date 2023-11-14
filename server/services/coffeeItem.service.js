@@ -61,14 +61,52 @@ const findPaginatedProducts = async (limit, page, filters, searchTerm, sort, isN
 };
 
 
+// const createCoffeeData = async () => {
+
+//     try{
+//         const productsData = await runScrapingFunctions();
+//         await CoffeeProduct.insertMany(productsData);
+
+//     } catch (error) {
+//         console.error(`Error in createCoffeeData: ${error.message}`);
+//     }
+
+// };
+
+//REFACTORED https://www.phind.com/search?cache=xj22uahztnz8ynj5jqj7irnj
 const createCoffeeData = async () => {
 
     try{
         const productsData = await runScrapingFunctions();
-        await CoffeeProduct.insertMany(productsData);
+
+        const roasteryOptions = ["Hola Coffee Roasters", "NOMAD", "Toma Café"];
+        const oldCoffeeData = await CoffeeProduct.find({});
+
+        productsData.forEach((coffee) => {
+            const existsInOldData = oldCoffeeData.some((oldCoffee) => oldCoffee.productLink === coffee.link);
+            if (!existsInOldData) {
+              coffee.class = 'new';
+            }
+        });
+
+        for (const roastery of roasteryOptions) {
+            await CoffeeProduct.deleteMany({ shopName: roastery });
+        }
+        const result = await CoffeeProduct.insertMany(productsData);
+
+        console.log(`${result.length} documents were inserted into the collection.`);
+
+        return {
+            statusCode: 200,
+            body: JSON.stringify({ message: "Data scraping and storage process completed successfully."}),
+        };
+        
 
     } catch (error) {
-        console.error(`Error in createCoffeeData: ${error.message}`);
+        return {
+            statusCode: 500,
+            body: JSON.stringify({ message: "An error occurred while scraping data." }),
+        };
     }
 
 };

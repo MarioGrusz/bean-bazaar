@@ -6,6 +6,8 @@ $color-grey: #e9e9e9;
 .filters-container {
   display: block;
 
+  border: 1px solid red;
+
   &__heading {
     font-size: 0.9375rem;
     text-transform: uppercase;
