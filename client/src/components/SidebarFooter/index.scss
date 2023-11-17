@@ -1,0 +1,33 @@
+@import "../../styles/variables";
+
+.filter-btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.filter-btn {
+  background: transparent;
+  border: 1px solid $primaryBlackColor;
+  border-radius: 4px;
+  white-space: nowrap;
+  height: 3rem;
+  color: $primaryBlackColor;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.3rem 2rem;
+  font-size: 0.8125rem;
+  transition: all 0.1s ease-in-out;
+}
+
+.filter-btn:nth-child(2) {
+  background-color: $primaryBlackColor;
+  color: $primaryWhiteColor;
+}
+
+active {
+  border-color: $primaryBlackColor;
+  background: $primaryBlackColor;
+  color: $backgroundColor;
+}

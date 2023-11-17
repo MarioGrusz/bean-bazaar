@@ -12,7 +12,9 @@ import {
  * @access public
 */
 
-const findPaginatedProductsController = async (req, res) => {
+//next https://www.phind.com/search?cache=ipn9c64wiw1detyrhs14fd04
+
+const findPaginatedProductsController = async (req, res, next) => {
 
     try {
 
@@ -25,13 +27,18 @@ const findPaginatedProductsController = async (req, res) => {
         const filters = {};
         const sort = {};
 
-        if (req.query.origin) {
-          filters.productOrigin = req.query.origin;
-        };
+        if (req.query.filters) {
+            const queryFilters = req.query.filters
 
-        if (req.query.roastery) {
-            filters.shopName = req.query.roastery;
-        };   
+            if (queryFilters.origin) {
+              filters.productOrigin = queryFilters.origin;
+            }
+
+            if (queryFilters.roastery) {
+                filters.shopName = queryFilters.roastery;
+            }
+        }
+            
 
         if (req.query.sort === 'asc') {
             sort.productPrice = 1; 
@@ -59,7 +66,7 @@ const findPaginatedProductsController = async (req, res) => {
  * @access public
 */
 
-const getShopsNamesController = async (req, res) => {
+const getShopsNamesController = async (req, res, next) => {
     try{
     
         const shopsNames = await getAllShopsNames();
@@ -77,7 +84,7 @@ const getShopsNamesController = async (req, res) => {
  * @access public
 */
 
-const getCoffeeOriginsController = async (req, res) => {
+const getCoffeeOriginsController = async (req, res, next) => {
     try{
     
         const coffeeOrigins = await getAllCoffeeOrigins();

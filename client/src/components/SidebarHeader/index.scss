@@ -1,0 +1,24 @@
+@import "../../styles/variables";
+
+.sidebar-header {
+  display: flex;
+  position: relative;
+  height: 3.5rem;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid $primaryGreyColor;
+
+  &__title {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  &__btn-close {
+    font-size: 2.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: block;
+    cursor: pointer;
+  }
+}

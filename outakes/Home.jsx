@@ -31,18 +31,25 @@ const Home = () => {
         origin: [],
     });
 
-    useEffect(() => {
-        if (showFilterSidebar) {
-          document.body.classList.add('hide-scrollbar');
-        } else {
-          document.body.classList.remove('hide-scrollbar');
-        }
-    }, [showFilterSidebar]);
-
     const toggleFilterNavbar = () => {
         setShowFilterSidebar(!showFilterSidebar)
     }
 
+
+    console.log('filters', filters)
+    console.log('checkedItems', checkedItems)
+
+
+    const handleSignout = async (formData) => {
+        try{
+            await logOut();
+            navigate("/login");
+        } catch (error) {
+
+            console.log(error.message);
+        }
+    } 
+ 
     const { 
         data, isLoading: isLoadingCoffeeItems, 
         isFetching: isFetchingCoffeeItems, 
@@ -87,7 +94,6 @@ const Home = () => {
 
             <section className='display-used-filters'>
                 <h1>Selected Filters :</h1>
-
                 <DisplaySelectedFilters 
                     filters={filters} 
                     setFilters={setFilters}
@@ -96,43 +102,43 @@ const Home = () => {
                     checkedItems={checkedItems}
                     setCheckedItems={setCheckedItems}
                 />
-
             </section>   
 
-            <section className={`filter-section-overlay ${showFilterSidebar ? 'active' : ''}`}>
-                <aside className={`filter-section-container ${showFilterSidebar ? 'active' : ''}`}>
-                    <div className='filter-wrapper'>
+            
+            <aside className={`filter-section-wrapper ${showFilterSidebar ? 'active' : ''}`}>
+    
+                <SidebarHeader toggleFilterNavbar={toggleFilterNavbar} />
+    
+                <Sort 
+                sort={sort} setSort={(sort) => setSort(sort)}
+                isNew={isNew} setIsNew={(isNew) => setIsNew(isNew)}
+                />
 
-                        <SidebarHeader toggleFilterNavbar={toggleFilterNavbar} />
+                <Filters 
+                    filters={filters} setFilters={setFilters}
+                    roasteryValuesRef={roasteryValuesRef}
+                    originValuesRef={originValuesRef}
+                    checkedItems={checkedItems}
+                    setCheckedItems={setCheckedItems}
+                />
 
-                        <Sort 
-                        sort={sort} setSort={(sort) => setSort(sort)}
-                        isNew={isNew} setIsNew={(isNew) => setIsNew(isNew)}
-                        />
+                <div className='footer-container'>
+                    <SidebarFooter />
+                </div>
+                  
+            </aside>       
 
-                        <Filters 
-                            filters={filters} 
-                            setFilters={setFilters}
-                            roasteryValuesRef={roasteryValuesRef}
-                            originValuesRef={originValuesRef}
-                            checkedItems={checkedItems}
-                            setCheckedItems={setCheckedItems}
-                        />
-                    </div>
+            {/* <aside className='sidebar'>
+                {<h1>PageNumber : {page}</h1>}
+                <Filters 
+                    filters={filters} setFilters={setFilters}
+                    roasteryValuesRef={roasteryValuesRef}
+                    originValuesRef={originValuesRef}
+                    checkedItems={checkedItems}
+                    setCheckedItems={setCheckedItems}
+                />
+            </aside> */}
 
-                    <div className='footer-container'>
-                        <SidebarFooter
-                         filters={filters} 
-                         setFilters={setFilters}
-                         roasteryValuesRef={roasteryValuesRef}
-                         originValuesRef={originValuesRef}
-                         setShowFilterSidebar={setShowFilterSidebar}
-                        />
-                    </div>     
-
-                </aside>  
-            </section>
-     
             <section className='content'>
                 {renderContent()}
                 <button onClick={() => setPage(page - 1)}>Previous</button>

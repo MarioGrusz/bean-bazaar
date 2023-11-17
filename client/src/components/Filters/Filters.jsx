@@ -1,12 +1,20 @@
 import './index.scss';
 import { useQuery } from 'react-query';
 import { getCoffeeOriginsHeaders, getRoasteriessHeaders } from '../../api/apiCoffeeData';
+import { useEffect } from 'react';
+
 
 
 const Filters = (props) => {
 
+    const { filters, setFilters, roasteryValuesRef, originValuesRef, checkedItems, setCheckedItems } = props
 
-    const { origin, setOrigin, roastery, setRoastery, filterCount, setFilterCount } = props
+    useEffect(() => {
+        setCheckedItems([]); // Reset checkedItems to an empty array
+        Object.values(filters).forEach((newArray) => {
+            setCheckedItems(prevCheckedItems => [...prevCheckedItems, ...newArray]);
+        });
+    }, [filters])
 
 
     const { data: coffeeOrigins, isLoading: isLoadingOrigins} = useQuery({
@@ -24,30 +32,29 @@ const Filters = (props) => {
     const originsNames = coffeeOrigins?.data || [];
 
 
-    const onRoasteryChange = ({ currentTarget: input }) => {
-        if(input.checked){
-            const state = [...roastery, input.value]
-            setRoastery(state);
-            setFilterCount(filterCount + 1);
+    const onRoasteryChange = (e) => {
+        if (e.target.checked) {
+            roasteryValuesRef.current.push(e.target.value);
+            setCheckedItems(prevCheckedItems => [...prevCheckedItems, e.target.value]);
         } else {
-            const state = roastery.filter((val) => val !== input.value);
-            setRoastery(state);
-            setFilterCount(filterCount - 1);
+            roasteryValuesRef.current = roasteryValuesRef.current.filter(val => val !== e.target.value);
+            setCheckedItems(prevCheckedItems => prevCheckedItems.filter(val => val !== e.target.value));
         }
     };
+     
 
-    const onOriginChange = ({ currentTarget: input }) => {
-        if(input.checked){
-            const state = [...origin, input.value]
-            setOrigin(state);
-            setFilterCount(filterCount + 1);
+    const onOriginChange = (e) => {
+        if (e.target.checked) {
+            originValuesRef.current.push(e.target.value);
+            setCheckedItems(prevCheckedItems => [...prevCheckedItems, e.target.value]);
         } else {
-            const state = origin.filter((val) => val !== input.value);
-            setOrigin(state);
-            setFilterCount(filterCount - 1);
+            originValuesRef.current = originValuesRef.current.filter(val => val !== e.target.value);
+            setCheckedItems(prevCheckedItems => prevCheckedItems.filter(val => val !== e.target.value));
         }
+        
     };
-
+       
+       
     return (
         <div className='filters-container'>
             <h1  className='filters-container__heading'>Filter by Roastery</h1>
@@ -57,16 +64,18 @@ const Filters = (props) => {
                     return (
                         <div className='filters-container__item-row' key={roastery}>
                             <input
-                            className='input'
-                            type={'checkbox'}
-                            value={roastery}
-                            onChange={onRoasteryChange}
+                                className='input'
+                                type={'checkbox'}
+                                value={roastery}
+                                onChange={(e) => onRoasteryChange(e)}
+                                checked={checkedItems.includes(roastery)}
                             />
-                            <p className='label'>{roastery}</p>
+                           <p className='label'>{roastery}</p>
                     </div>
                     )
                 })}
             </div>
+
 
             <h1  className='filters-container__heading'>Filter by Origin</h1>
             <div className='filters-container__items-wrapper'>
@@ -75,16 +84,17 @@ const Filters = (props) => {
                     return (
                         <div className='filters-container__item-row' key={origin}>
                             <input
-                            className='input'
-                            type={'checkbox'}
-                            value={origin}
-                            onChange={onOriginChange}
+                                className='input'
+                                type={'checkbox'}
+                                value={origin}
+                                onChange={(e) => onOriginChange(e)}
+                                checked={checkedItems.includes(origin)}                               
                             />
                             <p className='label'>{origin}</p>
                     </div>
                     )
                 })}
-            </div>             
+            </div>            
         </div>
     )
 }

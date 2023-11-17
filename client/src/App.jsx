@@ -11,10 +11,9 @@ import { Routes, Route } from "react-router-dom";
 import { Suspense, lazy } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
-import SignupPage from "./pages/SignupPage";
-import LoginPage from "./pages/LoginPage";
-
 const Home = lazy(() => import("./pages/Home"));
+const SignupPage = lazy(() => import("./pages/SignupPage"));
+const LoginPage = lazy(() => import("./pages/LoginPage"));
 
 
 const queryClient = new QueryClient({
@@ -30,7 +29,6 @@ const queryClient = new QueryClient({
 
 function App() {
   
-
   return (
     <QueryClientProvider client={queryClient}>
 

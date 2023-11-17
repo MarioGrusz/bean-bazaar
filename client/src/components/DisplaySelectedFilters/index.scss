@@ -1,0 +1,44 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.used-filter-btn {
+  &__wrapper {
+    height: auto;
+    min-width: 8rem;
+    width: auto;
+    padding: 0.3rem 1rem;
+    border-radius: $borderRadius;
+    background: $secondaryBackgroundColor;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    //margin-top: 1rem;
+  }
+
+  &__title {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-right: 0.5rem;
+  }
+
+  &__remove {
+    font-size: $headlineSmall;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: none;
+  }
+}
+
+.svg-remove-btn {
+  min-width: 1rem;
+  min-height: 1rem;
+  height: 1rem;
+  width: 1rem;
+}

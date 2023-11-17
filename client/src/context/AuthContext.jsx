@@ -72,9 +72,9 @@ export const AuthContextProvider = ({ children }) => {
 
         currentUser.getIdToken().then((idToken) => {
           setUser(currentUser);
-          console.log(currentUser)
+          //console.log(currentUser)
           setToken(idToken);
-          console.log('idToken', idToken)
+          //console.log('idToken', idToken)
         });
       } else {
         setUser(null);

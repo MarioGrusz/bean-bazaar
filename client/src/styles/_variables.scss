@@ -1,0 +1,23 @@
+//COLORS
+$backgroundColor: #f8f3df;
+$secondaryBackgroundColor: hsla(0, 0%, 8%, 0.1);
+$primaryBlackColor: #000000;
+$primaryOrangeColor: #ef445c;
+$primaryGreyColor: #e9e9e9;
+$primaryWhiteColor: #fff;
+
+//FONT SIZES
+$headlineBig: clamp(3rem, 6.9vw, 15rem);
+$headlineMedium: clamp(2rem, 2.5vw, 4rem);
+$headlineSmall: clamp(0.8rem, 1vw, 1.3rem);
+$headlineTiny: clamp(0.6rem, 0.7vw, 1rem);
+
+//SPACING
+$spacingMedium: 10rem;
+$spacingHorizontalSmall: 0 1.5rem;
+
+$btnPadding: 0.5rem 0.7rem;
+$borderSize: 1px;
+$borderRadius: 2.4rem;
+
+$borderPrimary: 0.1rem solid hsla(0, 0%, 8%, 0.2);

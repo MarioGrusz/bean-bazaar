@@ -1,7 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
-import './index.css'
+import './styles/reset.scss';
+import './styles/global.scss';
 import { BrowserRouter as Router } from 'react-router-dom'
 import { AuthContextProvider } from './context/AuthContext.jsx';
 

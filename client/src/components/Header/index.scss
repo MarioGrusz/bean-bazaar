@@ -1,0 +1,115 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  text-transform: uppercase;
+  padding: 1rem 3rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  transition: all 0.2s ease-out;
+
+  @include mq(phone, max) {
+    padding: 1rem;
+  }
+
+  &__title-wrapper {
+    padding: 0.5rem 0;
+    position: relative;
+
+    @include mq(tablet-wide, max) {
+      padding: 0;
+      width: initial;
+    }
+  }
+
+  &__title-link h1 {
+    font-size: $headlineSmall;
+  }
+
+  &__buttons-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 5px;
+    height: 2rem;
+    border: $borderPrimary;
+    border-radius: $borderRadius;
+    padding: 0 0.2rem;
+
+    @include mq(phone, max) {
+      padding: 0;
+      margin: 0;
+      border: none;
+    }
+  }
+
+  &__button {
+    align-items: center;
+    border-radius: 2.4rem;
+    display: flex;
+    justify-content: center;
+    padding: 0.1rem 1rem;
+    margin-right: 0.2rem;
+    transition-duration: 0.65s;
+    transition-property: background-color, color;
+    transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+
+    @include mq(phone, max) {
+      margin-right: 0;
+      padding: 0.1rem 0.5rem;
+    }
+  }
+
+  &__button:hover {
+    background: hsla(0, 0%, 8%, 0.1);
+
+    @include mq(phone, max) {
+      background: transparent;
+    }
+  }
+
+  &__button:nth-child(1),
+  &__button:nth-child(2) {
+    @include mq(phone, max) {
+      display: none;
+    }
+  }
+
+  &__button:nth-child(3),
+  &__button:nth-child(4) {
+    @include mq(tablet-small) {
+      display: none;
+    }
+  }
+
+  &__icon-filters {
+    width: 3.2rem;
+    height: 3.2rem;
+
+    @include mq(phone, max) {
+      width: 2.4rem;
+      height: 2.4rem;
+    }
+  }
+
+  &__button-title {
+    font-size: 15px;
+    letter-spacing: 0.2px;
+
+    @include mq(tablet-wide, max) {
+      font-size: 14px;
+    }
+  }
+}
+
+.glassmorphism {
+  background-color: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(15px);
+}

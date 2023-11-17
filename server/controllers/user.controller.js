@@ -8,7 +8,7 @@ import { createUser } from '../services/user.service.js';
 */
 
 
-const createUserController = async (req, res) => {
+const createUserController = async (req, res, next) => {
 
   const { name, email, firebaseId } = req.body;
 

@@ -1,14 +1,15 @@
 import './index.scss'
+import loupe from '../../assets/loupe.png'
 
 
-const SearchBar = ( {setSearch} ) => {
+const SearchBar = ({ setSearch }) => {
+
 
     return (
-
         <div className='search-bar'>
         
             <span className='search-bar__icon-container'>
-                {/* <img src='/assets/loupe.png' alt="lupe" /> ADD ICON LATER */}
+                <img src={loupe} alt="lupe" />
             </span>
             <input
                 type='text'
@@ -21,6 +22,6 @@ const SearchBar = ( {setSearch} ) => {
       
     )
 
-};
+}
 
 export default SearchBar

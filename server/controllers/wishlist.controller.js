@@ -7,7 +7,7 @@ import { getWishlistItems, addItemToWishlist, deleteWishlistItem } from "../serv
  * @access private
 */
 
-const addItemToWishlistController = async (req, res) => {
+const addItemToWishlistController = async (req, res, next) => {
   
     try{
         const uid = req.uid;
@@ -21,13 +21,13 @@ const addItemToWishlistController = async (req, res) => {
  
 
 
-const getWishlistItemsController = async (req, res) => {
+const getWishlistItemsController = async (req, res, next) => {
     try{
         const uid = req.uid;
 
         console.log('wishlistController', uid)
         const wishlistItems =  await getWishlistItems(uid);
-        console.log('ControllerWishlist', wishlistItems)
+        //console.log('ControllerWishlist', wishlistItems)
         res.status(200).json({ message: 'Wishlist items successfully retrived', data: wishlistItems});
 
     } catch (error) {
@@ -37,7 +37,7 @@ const getWishlistItemsController = async (req, res) => {
 };
 
 
-const deleteWishlistItemController = async (req, res) => {
+const deleteWishlistItemController = async (req, res, next) => {
     try{
         const uid = req.uid;
         const productId = req.body.productId; //Change it to BODY

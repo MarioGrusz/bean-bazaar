@@ -1,0 +1,43 @@
+@import "../../styles/variables";
+
+.sort-container {
+  border-bottom: 1px solid $primaryGreyColor;
+  display: block;
+
+  &__sort-by {
+    font-size: 0.9375rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 1rem 0;
+  }
+
+  &__btns-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+
+    padding-bottom: 1.5rem;
+    gap: 0.75rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .sort-btn {
+    background: transparent;
+    border: 1px solid $primaryGreyColor;
+    border-radius: 4px;
+    white-space: nowrap;
+    height: 2rem;
+    color: $primaryBlackColor;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    font-size: 0.8125rem;
+    transition: all 0.1s ease-in-out;
+  }
+
+  .active {
+    border-color: $primaryBlackColor;
+    background: $primaryBlackColor;
+    color: $backgroundColor;
+  }
+}
