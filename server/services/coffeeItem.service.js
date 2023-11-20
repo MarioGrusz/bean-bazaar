@@ -13,9 +13,6 @@ import runScrapingFunctions from "../scrapers/scrapeFirstDataBatch.js";
 
 const findPaginatedProducts = async (limit, page, filters, searchTerm, sort, isNew) => {
 
-
-    console.log('service', filters)
-
     try{
 
         const noFiltersPage = page;
@@ -46,6 +43,8 @@ const findPaginatedProducts = async (limit, page, filters, searchTerm, sort, isN
                 class: 'new'
             };
         };
+
+
         
         const totalCount = await CoffeeProduct.countDocuments(filters);
 

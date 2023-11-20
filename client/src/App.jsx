@@ -10,10 +10,15 @@
 import { Routes, Route } from "react-router-dom";
 import { Suspense, lazy } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import FallbackLoading from "./components/FallbackLoading/FallbackLoading";
+import RequireAuth from "./pages/ProtectedRoute";
 
 const Home = lazy(() => import("./pages/Home"));
 const SignupPage = lazy(() => import("./pages/SignupPage"));
 const LoginPage = lazy(() => import("./pages/LoginPage"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
+const ResetPassword = lazy(() => import("./pages/ResetPassword"));
+
 
 
 const queryClient = new QueryClient({
@@ -31,19 +36,23 @@ function App() {
   
   return (
     <QueryClientProvider client={queryClient}>
+      <Suspense fallback={FallbackLoading}>
+        <Routes>
 
-      <Routes>
+          {/* public routes */}
+          <Route path="/" element={<Home />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
 
-        {/* public routes */}
-        <Route path="/" element={<Home />} />
+          {/* protected routes */}
+          
 
-        {/* protected routes */}
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="/login" element={<LoginPage />} />
+          {/* page not found */}
 
-        {/* page not found */}
-
-      </Routes>
+        </Routes>
+      </Suspense>
 
     </QueryClientProvider>
   )

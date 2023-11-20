@@ -12,13 +12,14 @@ import { auth } from '../config/firebase.config';
 import { createUserInDatabse } from '../api/apiUser';
 
 
-
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
 
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
+
+  console.log(user)
 
 
   const createUser = async (email, password, name) => {

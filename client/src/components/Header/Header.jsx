@@ -18,10 +18,10 @@ const Header = ({ wishlistData, setWishlistData, toggleFilterNavbar }) => {
     const handleLogout = async () => {
         try {
           await logOut();
-          showSnackbar( 'Logged out successfully' , 'success' );
+          //showSnackbar( 'Logged out successfully' , 'success' );
         } catch (error) {
           console.log(error.message);
-          showSnackbar( 'An error occured. Try again' , 'error' );
+          //showSnackbar( 'An error occured. Try again' , 'error' );
         }
     };
 

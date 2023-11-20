@@ -12,8 +12,6 @@ import {
  * @access public
 */
 
-//next https://www.phind.com/search?cache=ipn9c64wiw1detyrhs14fd04
-
 const findPaginatedProductsController = async (req, res, next) => {
 
     try {
@@ -48,6 +46,7 @@ const findPaginatedProductsController = async (req, res, next) => {
 
         console.log('filters from controller getPaginated', filters)
         console.log('PAGE', page)
+        console.log('SORT', sort)
 
         const coffeeData = await findPaginatedProducts(limit, page, filters, searchTerm, sort, isNew);
         res.status(200).json({ message: 'Coffee products loaded successfully', data: coffeeData });

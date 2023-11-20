@@ -12,11 +12,11 @@ const Sort = ({ sort, setSort, isNew, setIsNew }) => {
     };
 
     const onAscendingSort = () => {
-        setSort({ sort: 'price', order: 'asc' });
+        setSort('asc');
     }
 
     const onDescendingSort = () => {
-        setSort({ sort: 'price', order: 'desc' });
+        setSort('desc');
     }
 
     const showNewArrivals = () => {

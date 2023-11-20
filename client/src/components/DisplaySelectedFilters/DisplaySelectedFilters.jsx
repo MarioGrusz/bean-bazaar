@@ -1,3 +1,4 @@
+import React from 'react';
 import './index.scss';
 
 const RemoveButton = () => (
@@ -32,10 +33,10 @@ const DisplaySelectedFilters = (props) => {
     return (
         Object.values(filters).map((filterArray, index) => {
             return (
-               <>
+               <React.Fragment key={index}>
                     {filterArray.map((filterItem, itemIndex) => (
                         filterItem === 0 ? null : (
-                            <span key={filterItem} className='used-filter-btn__wrapper'>
+                            <span key={`${itemIndex}-${filterItem}`} className='used-filter-btn__wrapper'>
                                 <p className='used-filter-btn__title'>{filterItem}</p>
                                 <button id={filterItem} onClick={() => removeFilter(filterItem)} className='used-filter-btn__remove'>
                                     <RemoveButton />
@@ -43,7 +44,7 @@ const DisplaySelectedFilters = (props) => {
                             </span> 
                         )
                     ))}
-                </>
+                </React.Fragment>
             );
         })
     );

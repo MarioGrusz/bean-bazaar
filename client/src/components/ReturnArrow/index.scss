@@ -1,0 +1,13 @@
+.return-arrow {
+  position: absolute;
+  z-index: 2;
+  margin: 2rem 0 0 3rem;
+  border: 1px solid;
+  border-radius: 100%;
+  padding: 1rem;
+  width: 4rem;
+  height: 4rem;
+  transform: rotate(180deg);
+  align-items: center;
+  display: flex;
+}

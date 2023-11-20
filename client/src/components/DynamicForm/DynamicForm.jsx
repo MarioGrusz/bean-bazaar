@@ -1,158 +1,79 @@
-import { useReducer } from 'react';
-import './index.scss';
+import './index.scss'
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import Button from '../Button/Button';
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
-//Buttons https://www.phind.com/search?cache=pi7i3f3dln74u1rdacej0ycn
+const DynamicForm = ({ inputFields, handleSubmit, showForgotPassword, showPrivacyPolicy, buttonText, showLogin }) => {
 
-const DynamicForm = (props) => {
+    const [formData, setFormData] = useState({});
+    const [visible, setVisible] = useState(false);
 
-
-  const { inputFields, handleSubmit, formType } = props
-
-  const formReducer = (state, action) => {
-      switch(action.type) {
-        case 'SET_FIELD':
-          return {
-            ...state,
-            [action.fieldName]: action.value
-          };
-        default:
-          return state;
-      }
-  };
-
-  const [formData, dispatch] = useReducer(formReducer, {});
-
-  const handleInputChange = (e) => {
+    const handleChange = (e) => {
       const { name, value } = e.target;
-      dispatch({ type: 'SET_FIELD', fieldName: name, value });
-  };
+      setFormData({ ...formData, [name]: value });
+    };
 
 
-  const handleFormSubmit = (e) => {
+    const onSubmit = (e) => {
       e.preventDefault();
       handleSubmit(formData); // Pass the form data to the submit function
-    
-  };
+     
+    };
 
-  const handleInputFocus = (e) => {
-      e.target.classList.add('active');
-  };
+    return (
+      <form className='form' onSubmit={onSubmit}>
+
+        {inputFields.map((field) => (
+          <div key={field.name} className='form__input-wrapper'>
+            <input
+              type={field.type === 'password' && visible ? 'text' : field.type} 
+              name={field.name}
+              required={field.required}
+              value={formData[field.name] || ''}
+              onChange={handleChange}
+              placeholder={field.placeholder}
+              onFocus={(e) => e.target.placeholder = ''}
+              onBlur={(e) => e.target.placeholder = field.placeholder}
+            />
+            {field.showEye && (
+              visible ? (
+                <AiOutlineEye
+                  className="form__password-eye"
+                  onClick={() => setVisible(false)}
+                />
+              ) : (
+                <AiOutlineEyeInvisible
+                  className="form__password-eye"
+                  onClick={() => setVisible(true)}
+                />
+              )
+            )}
+          </div>
+        ))}
+
+        {showForgotPassword && (
+          <p className="forgot-password">
+            <Link to="/reset" className="forgot-password-link">Forgot Your Password?</Link>
+          </p>
+        )}
+
+        {showPrivacyPolicy && (
+            <div className='privacy-policy'>
+              <Link className='privacy-policy-link' to="/privacy-policy">Privacy Policy</Link>
+          </div>
+        )}
+
+        {showLogin && (
+          <p className="forgot-password">
+            <Link to="/login" className="forgot-password-link">Log in</Link>
+          </p>
+        )}
+
+        <Button onClick={onSubmit} type='submit' text={buttonText} marginTop={'3rem'} />
+      </form>
+    );
   
-  const handleInputBlur = (e) => {
-      if (e.target.value !== "") return;
-      e.target.classList.remove("active");
-  };
-
-  return (
-
-    <form onSubmit={handleFormSubmit}>
-
-      {inputFields.map((field) => (
-        <div key={field.name} className='input-wrap'>
-          <input
-            type={field.type}
-            name={field.name}
-            className='input-field'
-            autoComplete='off'
-            required={field.required}
-            value={formData[field.name] || ''}
-            onChange={handleInputChange}
-            onFocus={handleInputFocus}
-            onBlur={handleInputBlur}
-          />
-          <label>{field.label}</label>
-        </div>
-      ))}
-
-      {formType === 'signin' ? (
-      <button onClick={handleFormSubmit}>Sign In</button>
-      ) : (
-      <>
-        <button onClick={handleFormSubmit}>Log In</button>
-        <button onClick={handleFormSubmit}>Forgot Password</button>
-        <button onClick={handleFormSubmit}>Log In with Google</button>
-      </>
-      )}
-
-    </form>
-  ); 
 }
 
 export default DynamicForm
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import { useState } from 'react';
-// import './index.scss';
-
-
-// const DynamicForm = ({ inputFields, handleSubmit }) => {
-
-//     const [formData, setFormData] = useState({});
-
-//     const handleChange = (e) => {
-//         const { name, value } = e.target;
-//         setFormData({ ...formData, [name]: value });
-//     };
-
-
-//     const onSubmit = (e) => {
-//         e.preventDefault();
-//         handleSubmit(formData); // Pass the form data to the submit function
-     
-//     };
-
-//     const handleOnBlur = (e) => {
-//         if (e.target.value !== "") return;
-//         e.target.classList.remove("active");
-//     };
-
-//     return (
-//         <form onSubmit={onSubmit}>
-
-//           {inputFields.map((field) => (
-//             <div key={field.name} className='input-wrap'>
-//               <input
-//                 type={field.type}
-//                 name={field.name}
-//                 className='input-field'
-//                 autoComplete='off'
-//                 required={field.required}
-//                 value={formData[field.name] || ''}
-//                 onChange={handleChange}
-//                 onFocus={(e) => {
-//                   e.target.classList.add('active');
-//                 }}
-//                 onBlur={handleOnBlur}
-//               />
-//               <label>{field.label}</label>
-//             </div>
-//           ))}
-
-//           <button onClick={onSubmit}>Submit</button>
-    
-
-//         </form>
-//     ); 
-// }
-
-// export default DynamicForm

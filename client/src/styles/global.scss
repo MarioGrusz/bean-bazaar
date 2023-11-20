@@ -40,7 +40,9 @@ body {
   flex-wrap: wrap;
 }
 
-//sidebar with filters
+/**
+SIDEBAR WITH FILTERS
+**/
 
 .filter-section-overlay {
   position: fixed;
@@ -90,4 +92,134 @@ body {
   justify-content: center;
   align-items: center;
   border: 1px solid $primaryGreyColor;
+}
+
+.header-container {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+/**
+AUTHORIZATION PAGES
+**/
+
+.authorization {
+  display: block;
+  justify-content: center;
+  pointer-events: all;
+
+  &__container {
+    height: 100%;
+    padding: 3% 25%;
+    text-align: center;
+    position: relative;
+
+    margin-top: 2rem;
+
+    @include mq(phone, max) {
+      padding: 150px 10%;
+      text-align: left;
+      height: 100vh;
+    }
+
+    h4 {
+      font-size: 2.5rem;
+      line-height: 3.2rem;
+      margin-bottom: 1rem;
+
+      @include mq(phone, max) {
+        font-size: 1.5rem;
+        line-height: 2rem;
+      }
+    }
+  }
+
+  &__redirect {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+
+    p {
+      font-size: 1.1rem;
+      margin-right: 1rem;
+
+      @include mq(phone, max) {
+        font-size: 1rem;
+      }
+    }
+
+    .redirect-link {
+      font-size: 1.1rem;
+      font-weight: 700;
+
+      @include mq(phone, max) {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .signup {
+    margin-top: -1rem;
+  }
+}
+
+/**
+PRIVACY POLICY PAGE
+**/
+
+.privacy-policy-page {
+  max-width: 800px;
+  margin: 0 auto;
+
+  padding: 5rem 1.5rem;
+
+  @include mq(phone, max) {
+    padding: 10rem 1.5rem;
+  }
+
+  &__separator {
+    margin-top: 15rem;
+  }
+
+  strong {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      margin-bottom: 10px;
+
+      a {
+        color: #007bff;
+        text-decoration: underline;
+
+        &:hover {
+          color: #0056b3;
+        }
+      }
+    }
+  }
+
+  .cookie-info {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-top: 20px;
+
+    p {
+      margin: 0;
+    }
+  }
 }

@@ -1,19 +1,19 @@
-import DynamicForm from "../components/DynamicForm/DynamicForm";
+import DynamicForm from '../components/DynamicForm/DynamicForm';
 import { UserAuth } from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
-
-//PROTECTED ROUTES -----> https://www.phind.com/search?cache=e92hc4m6x6fxxc2di4l6ejzx
+import { useNavigate, Link } from 'react-router-dom';
+import Button from '../components/Button/Button';
+import ReturnArrow from '../components/ReturnArrow/ReturnArrow';
 
 
 const LoginPage = () => {
 
-    const { googleSignIn,  signIn, user} = UserAuth();
+    const { googleSignIn, signIn } = UserAuth();
     const navigate = useNavigate();
 
 
     const inputFields = [
-        { name: 'email', type: 'email', label: 'Email', required: true },
-        { name: 'password', type: 'password', label: 'Password', required: true },
+        { name: 'email', type: 'email', placeholder: 'Email address', required: true, showEye: false },
+        { name: 'password', type: 'password', placeholder: 'Password', required: true, showEye: true },
         
     ];
 
@@ -29,11 +29,37 @@ const LoginPage = () => {
         
     }
 
+    const handleGoogleSignIn = async () => {
+        try {
+          await googleSignIn();
+          navigate('/');
+        } catch (error) {
+          console.log(error.message);
+        }
+    };
+
 
     return (
-        <div>
-            <DynamicForm formType='login' inputFields={inputFields} handleSubmit={handleSubmitwithEmail} />
-        </div>
+        <main className="authorization">
+
+            <ReturnArrow to='/' />
+            
+            <section className="authorization__container">
+                <h4>Log in</h4>
+                <DynamicForm 
+                    inputFields={inputFields} 
+                    handleSubmit={handleSubmitwithEmail} 
+                    showForgotPassword={true} 
+                    buttonText='Log in' 
+                />
+                <Button onClick={handleGoogleSignIn} type='submit' text={'Sign in with Google'} showGoogleIcon={true} />
+                <div className='authorization__redirect'>
+                    <p>Not have any account?</p>
+                    <Link className='redirect-link' to="/signup">Sign Up</Link>
+                </div>
+            </section>
+            
+        </main>
     )
 }
 

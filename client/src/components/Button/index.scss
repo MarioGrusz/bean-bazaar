@@ -1,0 +1,47 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.auth-button {
+  margin-top: 1rem;
+  border: 1px solid $primaryBlackColor;
+  border-radius: 4px;
+  height: 65px;
+  font-size: 1.8rem;
+  line-height: 2.4rem;
+  text-align: center;
+  width: 100%;
+  transition: all 0.3s;
+  cursor: pointer;
+  color: $primaryBlackColor;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include mq(phone, max) {
+    height: 45px;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+  }
+
+  &__icon-google {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 0;
+    margin-top: -1px;
+
+    svg {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
+  &__text {
+    margin-left: 1rem;
+  }
+
+  &:hover {
+    background-color: $primaryBlackColor;
+    color: $backgroundColor;
+  }
+}

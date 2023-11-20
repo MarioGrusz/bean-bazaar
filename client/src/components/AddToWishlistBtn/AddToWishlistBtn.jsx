@@ -5,9 +5,6 @@ import useDeleteWishlistItem from '../../reactQueryHooks/useDeleteWishlistItem';
 import { UserAuth } from '../../context/AuthContext';
 
 
-//Protected route https://www.phind.com/search?cache=g20alba3nnubprds3pk4oiiy
-
-
 const AddToWishlistBtn = ({ heartFill, setHeartFill }) => {
 
     const addToWishlistMutation = useAddToWishlist();
@@ -31,8 +28,6 @@ const AddToWishlistBtn = ({ heartFill, setHeartFill }) => {
         return heartFill ? deleteWishlistItemMutation.mutate({ id: productId, token: token }) : addToWishlistMutation.mutate({ id: productId, token: token });
     }
      
-    
-
 
     return (
         <>

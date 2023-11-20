@@ -1,0 +1,89 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.form {
+  @include mq(phone, max) {
+    margin: 0;
+    padding: 0;
+  }
+
+  input {
+    //margin-top: 1rem;
+    border-bottom: solid 1px $primaryBlackColor;
+    height: 65px;
+    width: 100%;
+    color: $primaryBlackColor;
+    background: transparent;
+    font-size: 1.5rem;
+    line-height: 1.8rem;
+
+    @include mq(phone, max) {
+      height: 45px;
+      font-size: 1.2rem;
+      line-height: 1.5rem;
+      border: solid 1px $primaryBlackColor;
+      border-radius: 4px;
+      padding: 0 0.5rem;
+    }
+  }
+
+  input:focus {
+    outline: none;
+  }
+
+  &__input-wrapper {
+    position: relative;
+
+    @include mq(phone, max) {
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__password-eye {
+    position: absolute;
+    top: 20px;
+    right: 0px;
+    height: 35px;
+    width: 60px;
+    cursor: pointer;
+    border: none;
+
+    @include mq(phone, max) {
+      height: 25px;
+      width: 40px;
+      top: 15px;
+    }
+  }
+}
+
+.forgot-password {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  label,
+  a {
+    @include mq(phone, max) {
+      font-size: 0.8rem;
+    }
+  }
+}
+
+.forgot-password-link {
+  margin-left: auto;
+  margin-top: 1rem;
+}
+
+.privacy-policy {
+  text-align: left;
+}
+
+.privacy-policy-link {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-top: 1rem;
+
+  @include mq(phone, max) {
+    font-size: 1rem;
+  }
+}

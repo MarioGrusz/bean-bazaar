@@ -1,6 +1,7 @@
 import DynamicForm from "../components/DynamicForm/DynamicForm";
-import { UserAuth } from '../context/AuthContext';
-
+import { UserAuth } from "../context/AuthContext";
+import { useNavigate, Link } from 'react-router-dom';
+import ReturnArrow from "../components/ReturnArrow/ReturnArrow";
 
 const SignupPage = () => {
 
@@ -8,10 +9,9 @@ const SignupPage = () => {
 
 
     const inputFields = [
-        { name: 'name', type: 'name', label: 'Your Name', required: true },
-        { name: 'email', type: 'email', label: 'Email', required: true },
-        { name: 'password', type: 'password', label: 'Password', required: true },
-        
+        { name: 'name', type: 'name', placeholder: 'Your Name', required: true },
+        { name: 'email', type: 'email', placeholder: 'Email', required: true },
+        { name: 'password', type: 'password', placeholder: 'Password', required: true, showEye: true  },       
     ];
 
     const handleCreateUserWithEmail = async (formData) => {
@@ -29,9 +29,27 @@ const SignupPage = () => {
     }
 
     return (
-        <div>
-            <DynamicForm formType='signin' inputFields={inputFields} handleSubmit={handleCreateUserWithEmail} />
-        </div>
+        <main className="authorization">
+
+            <ReturnArrow to="/" />
+
+
+            <section className="authorization__container">
+                <h4>New User</h4>
+                <DynamicForm 
+                    inputFields={inputFields} 
+                    handleSubmit={handleCreateUserWithEmail}  
+                    buttonText='Sign Up' 
+                    showPrivacyPolicy={true}
+                />
+            </section>
+
+            <div className='authorization__redirect signup'>
+                <p>Already have any account?</p>
+                <Link className='redirect-link' to="/login">Sign In</Link>
+            </div>
+            
+        </main>
     )
 }
 

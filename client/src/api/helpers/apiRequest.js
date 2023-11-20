@@ -30,7 +30,3 @@ const apiRequest = async (url, method, token = null, data = null, params = null)
 };
 
 export default apiRequest
-  
- 
-
-//https://www.phind.com/search?cache=odgi6m064o110w7bf3gymx0f

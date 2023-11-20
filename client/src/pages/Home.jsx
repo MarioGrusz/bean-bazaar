@@ -6,6 +6,7 @@ import Header from '../components/Header/Header';
 import Sort from '../components/Sort/Sort';
 import SidebarHeader from '../components/SidebarHeader/SidebarHeader';
 import SidebarFooter from '../components/SidebarFooter/SidebarFooter';
+import Pagination from '../components/Pagination/Pagination';
 import { UserAuth } from '../context/AuthContext';
 import useGetCoffeeItems from '../reactQueryHooks/useGetCoffeeItems';
 import useGetWishlistItems from '../reactQueryHooks/useGetWishlistItems';
@@ -54,10 +55,15 @@ const Home = () => {
         refetchCoffeeItems();
     }, [search, page, filters, sort, isNew, refetchCoffeeItems]);
       
-    const { data: wishlistData, isLoading: isLoadingWishlistItems } = useGetWishlistItems(token);
+    const { data: wishlistData, isLoading: isLoadingWishlistItems } = useGetWishlistItems(token, user);
 
     const coffeeItems = data?.data.docs || [];
     const wishlistItems = wishlistData?.data || [];
+
+
+    const limit = data?.data.limit || null;
+    const paginationPage = data?.data.page || null;
+    const total = data?.data.totalDocs || null;
 
     const renderContent = () => {
 
@@ -67,7 +73,7 @@ const Home = () => {
 
         return <ItemCard 
             products={coffeeItems} 
-            // wishlistItems={wishlistItems} 
+            wishlistItems={wishlistItems} 
             heartFill={heartFill}
             setHeartFill={setHeartFill}
         />
@@ -86,7 +92,8 @@ const Home = () => {
             <SearchBar search={search} setSearch={(search) => setSearch(search)} /> 
 
             <section className='display-used-filters'>
-                <h1>Selected Filters :</h1>
+                
+                {filters.roastery.length > 0 || filters.origin.length > 0 ? <h1>Selected Filters :</h1> : '' }
 
                 <DisplaySelectedFilters 
                     filters={filters} 
@@ -101,9 +108,12 @@ const Home = () => {
 
             <section className={`filter-section-overlay ${showFilterSidebar ? 'active' : ''}`}>
                 <aside className={`filter-section-container ${showFilterSidebar ? 'active' : ''}`}>
-                    <div className='filter-wrapper'>
 
+                    <header className='header-container'>
                         <SidebarHeader toggleFilterNavbar={toggleFilterNavbar} />
+                    </header> 
+
+                    <div className='filter-wrapper'>   
 
                         <Sort 
                         sort={sort} setSort={(sort) => setSort(sort)}
@@ -120,7 +130,7 @@ const Home = () => {
                         />
                     </div>
 
-                    <div className='footer-container'>
+                    <footer className='footer-container'>
                         <SidebarFooter
                          filters={filters} 
                          setFilters={setFilters}
@@ -128,16 +138,25 @@ const Home = () => {
                          originValuesRef={originValuesRef}
                          setShowFilterSidebar={setShowFilterSidebar}
                         />
-                    </div>     
+                    </footer>     
 
                 </aside>  
+
             </section>
      
             <section className='content'>
                 {renderContent()}
-                <button onClick={() => setPage(page - 1)}>Previous</button>
-                <button onClick={() => setPage(page + 1)}>Next</button>
             </section>
+
+            <Pagination
+              
+              data={coffeeItems}
+              page={page}
+              limit={limit ? limit : 0}
+              total={total ? total : 0}
+              setPage={(page) => setPage(page)}
+             
+            />
 
         </main>
     )
