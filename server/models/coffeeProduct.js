@@ -9,6 +9,7 @@ const coffeeProductSchema = new mongoose.Schema({
     productPrice: {type: String,  required: true},
     productImage: {type: String, required: true},
     productLink: {type: String, required: true},
+    class: {type: String, default: ''}
 });
 
 coffeeProductSchema.plugin(mongoosePaginate);
