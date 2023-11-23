@@ -18,8 +18,15 @@ export const AuthContextProvider = ({ children }) => {
 
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
+  const [snackbar, setSnackbar] = useState({ show: false, message: '', type: '' });
 
-  console.log(user)
+  const showSnackbar = (message, type ) => {
+    setSnackbar({ show: true, message, type });
+  };
+
+  const hideSnackbar = () => {
+    setSnackbar({ show: false, message: '', type: '' });
+  };
 
 
   const createUser = async (email, password, name) => {
@@ -95,6 +102,10 @@ export const AuthContextProvider = ({ children }) => {
     user,
     token,
     resetPassword,
+    snackbar,
+    setSnackbar,
+    showSnackbar,
+    hideSnackbar,
   }
 
   return (

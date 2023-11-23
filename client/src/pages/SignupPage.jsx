@@ -5,7 +5,7 @@ import ReturnArrow from "../components/ReturnArrow/ReturnArrow";
 
 const SignupPage = () => {
 
-    const { createUser } = UserAuth();
+    const { createUser, showSnackbar } = UserAuth();
 
 
     const inputFields = [
@@ -20,10 +20,11 @@ const SignupPage = () => {
         try{
             const { email, password, name } = formData;
             await createUser(email, password, name);
+            showSnackbar( 'Account created successfully. Please log in.' , 'success' );
            
-        } catch (error) {
-           
+        } catch (error) {      
             console.log(error.message);
+            showSnackbar( 'Failed to create an account.' , 'error' );
         }
         
     }

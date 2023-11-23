@@ -223,3 +223,26 @@ PRIVACY POLICY PAGE
     }
   }
 }
+
+.page-not-found {
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+      font-size: 15rem;
+    }
+
+    p {
+      font-size: 5rem;
+    }
+  }
+}

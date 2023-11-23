@@ -4,17 +4,15 @@ import AddToWishlistBtn from '../AddToWishlistBtn/AddToWishlistBtn';
 
 const ItemCard = (props) => {
 
-  const { products, wishlistItems, heartFill, setHeartFill} = props;
-  // const wishlistIDs = wishlistItems.map((item) => item._id);
-
+  const { coffeeItems, wishlistItems, heartFill, setHeartFill} = props;
 
   return (
     <section className='coffee-table'>
 
-      {products.length > 0 && (
+      {coffeeItems.length > 0 && (
         <div className='coffee-table__items'>
 
-          {products.map((product) => (
+          {coffeeItems.map((product) => (
 
             <article className='coffee-table__item-row' key={product._id}>
               <div className='coffee-table__product' id={product._id}>
@@ -29,15 +27,13 @@ const ItemCard = (props) => {
                   )}
 
                   <img src={product.productImage} alt="product" />
-                  {/* <AddToWishlistBtn
-                    heartFill={wishlistItems.some(item => item._id === product._id)}
+  
+                  <AddToWishlistBtn
+                    heartFill={Array.isArray(wishlistItems) && wishlistItems.length > 0 && wishlistItems.some(item => item._id === product._id)}
+
                     setHeartFill={setHeartFill}
-                  /> DO SOMETHING IF THIS IS EMPTY*/}
-                  {/* <AddToWishlistBtn
-                    heartFill={wishlistItems.length > 0 && wishlistItems.some(item => item._id === product._id)}
-                    setHeartFill={setHeartFill}
-                  /> */}
-                  <AddToWishlistBtn />
+                    coffeeItems={coffeeItems}
+                  />
 
                 </div>
 
@@ -56,7 +52,7 @@ const ItemCard = (props) => {
                   </div>
                   <div className='button-wrapper'>
                     <button className='go-to-shop-btn'>
-                      <Link href={product.productLink}>GO TO THE SHOP</Link>
+                      <Link to={product.productLink}>GO TO THE SHOP</Link>
                     </button>
                   </div>
                 </div>

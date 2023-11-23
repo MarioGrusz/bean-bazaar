@@ -1,11 +1,10 @@
-import { useState } from 'react';
 import './index.scss';
 import useAddToWishlist from '../../reactQueryHooks/useAddToWishlist';
 import useDeleteWishlistItem from '../../reactQueryHooks/useDeleteWishlistItem';
 import { UserAuth } from '../../context/AuthContext';
 
 
-const AddToWishlistBtn = ({ heartFill, setHeartFill }) => {
+const AddToWishlistBtn = ({ heartFill, setHeartFill, coffeeItems }) => {
 
     const addToWishlistMutation = useAddToWishlist();
     const deleteWishlistItemMutation = useDeleteWishlistItem();
@@ -16,16 +15,18 @@ const AddToWishlistBtn = ({ heartFill, setHeartFill }) => {
     const handleClick = (event) => {
         const productElement = event.target.closest('.coffee-table__product');
         const productId = productElement ? productElement.id : null;
+        const newItem = coffeeItems?.find(item => item._id === productId);
+
     
-        if (productId) {
-            performMutation(productId);
+        if (productId, newItem) {
+            performMutation(productId, newItem);
             setHeartFill(!heartFill);
         }
     }
     
 
-    const performMutation = (productId) => {
-        return heartFill ? deleteWishlistItemMutation.mutate({ id: productId, token: token }) : addToWishlistMutation.mutate({ id: productId, token: token });
+    const performMutation = (productId, newItem) => {
+        return heartFill ? deleteWishlistItemMutation.mutate({ id: productId, token: token }) : addToWishlistMutation.mutate({ id: productId, token: token, newItem: newItem });
     }
      
 

@@ -1,27 +1,20 @@
-import Wishlist from '../models/wishlist.js';
-import User from '../models/user.js';
+import findUserAndWishlist from '../utils/findUserAndWishlist.js';
 
 
 const getWishlistItems = async (uid) => {
 
     try{
-        console.log('get wishlist')
-        const user = await User.findOne({ firebaseId: uid });
-        console.log(user)
+        
+        const { wishlist } = await findUserAndWishlist(uid);
 
-        if (!user) {
-            console.log('User not found.');
-            return null;
-        }
+        if (!wishlist) return "Wishlist is empty"; 
 
-        const wishlist = await Wishlist.findOne({ creator: user._id }).populate('productsIds');
+        const populatedWishlist = await wishlist.populate('productsIds');
 
-        console.log(wishlist)
-
-        if (!wishlist || wishlist.productsIds.length === 0) {
-            return "Wishlist is empty"; // or return an empty array, [].
+        if (populatedWishlist.productsIds.length === 0) {
+            return []; 
         } else {
-            return wishlist.productsIds;
+            return populatedWishlist.productsIds;
         }
         
     } catch (error) {
@@ -31,35 +24,17 @@ const getWishlistItems = async (uid) => {
 };
 
 
-
-//REFACTORED FUNCTION
-
 const addItemToWishlist = async (uid, productId) => {
+
     try {
  
-        const user = await User.findOne({ firebaseId: uid });
-
-        if (!user) {
-            console.log('User not found.');
-            return null;
-        }
-
-        let wishlist = await Wishlist.findOne({ creator: user._id })
-
-        if (!wishlist) {
-            wishlist = new Wishlist({
-                creator: user._id,
-                productsIds: []
-            });
-            await wishlist.save();
-        }
+        const { user, wishlist } = await findUserAndWishlist(uid);
 
         wishlist.productsIds.push(productId);
         await wishlist.save();
-
         console.log('Product added to wishlist:', productId);
- 
         return user;
+
     } catch (error) {
         console.error(`Error while adding product id to wishlist: ${error.message}`);
         throw new Error('Error while adding product id to wishlist');
@@ -69,21 +44,19 @@ const addItemToWishlist = async (uid, productId) => {
 
 
 
-const deleteWishlistItem = async (productId) => {
+const deleteWishlistItem = async (uid, productId) => {
 
     try{
 
-        const wishlist = await Wishlist.findOne(); 
-
-        // if (!wishlist) {
-        //     return res.status(404).send();
-        // };
+        const { user, wishlist } = await findUserAndWishlist(uid);
 
         await wishlist.updateOne(
             { $pull: { productsIds: productId } }
         );
-
-        
+        await wishlist.save();
+        console.log('Product removed from wishlist:', productId);
+        return user;
+       
     } catch (error) {
         console.error(`Error while deleting product id to wishlist: ${error.message}`);
     }

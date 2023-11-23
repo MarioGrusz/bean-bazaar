@@ -7,7 +7,7 @@ import ReturnArrow from '../components/ReturnArrow/ReturnArrow';
 
 const LoginPage = () => {
 
-    const { googleSignIn, signIn } = UserAuth();
+    const { googleSignIn, signIn, showSnackbar } = UserAuth();
     const navigate = useNavigate();
 
 
@@ -21,10 +21,12 @@ const LoginPage = () => {
         try{
             const { email, password } = formData;
             await signIn(email, password);
+            showSnackbar( 'Logged in successfully' , 'success' );
             navigate('/');
 
         } catch (error) {
             console.log(error.message);
+            showSnackbar( 'Fail to log in' , 'error' );
         }
         
     }
@@ -32,9 +34,11 @@ const LoginPage = () => {
     const handleGoogleSignIn = async () => {
         try {
           await googleSignIn();
+          showSnackbar( 'Logged in successfully' , 'success' );
           navigate('/');
         } catch (error) {
           console.log(error.message);
+          showSnackbar( 'Fail to log in' , 'error' );
         }
     };
 

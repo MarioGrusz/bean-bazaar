@@ -24,10 +24,7 @@ const addItemToWishlistController = async (req, res, next) => {
 const getWishlistItemsController = async (req, res, next) => {
     try{
         const uid = req.uid;
-
-        //console.log('wishlistController', uid)
         const wishlistItems =  await getWishlistItems(uid);
-        //console.log('ControllerWishlist', wishlistItems)
         res.status(200).json({ message: 'Wishlist items successfully retrived', data: wishlistItems});
 
     } catch (error) {
@@ -40,7 +37,7 @@ const getWishlistItemsController = async (req, res, next) => {
 const deleteWishlistItemController = async (req, res, next) => {
     try{
         const uid = req.uid;
-        const productId = req.body.productId; //Change it to BODY
+        const productId = req.body.productId;
         const updatedWishlist = await deleteWishlistItem(uid, productId)
         res.status(200).json({ message: `Item ${productId} deleted successfully`, data: updatedWishlist});
 

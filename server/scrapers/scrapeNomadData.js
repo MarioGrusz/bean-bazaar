@@ -16,7 +16,7 @@ const getNomadCoffeeProductData = async () => {
 
     const productHandles = await page.$$('div.products > .col-md-4');
     const productHandlesToScrape = productHandles.slice(0, -3);
-    const shopName = await page.$eval('.site-title > a', (el) => el.textContent);
+    //const shopName = await page.$eval('.text-center > a', (el) => el.textContent);
 
     const productData = [];
 
@@ -33,14 +33,12 @@ const getNomadCoffeeProductData = async () => {
                 const productNameString = await productNameElement.evaluate((el) => el.textContent.trim());
                 productName = productNameString.replace(/\s+/g, ' ').trim();
             } else {
-                //await producthandle.evaluate((el) => el.parentElement.remove());
                 continue
             }
 
             if (productPriceElement) {
                 productPrice = await productPriceElement.evaluate((el) => el.textContent.trim());
             } else {
-                //await producthandle.evaluate((el) => el.parentElement.remove());
                 continue
             }
 
@@ -51,7 +49,7 @@ const getNomadCoffeeProductData = async () => {
             const productOrigin = extractCoffeeOrigin(productName);
 
             productData.push({
-                shopName,
+                //shopName,
                 productName,
                 productPrice,
                 productImage,
@@ -70,6 +68,8 @@ const getNomadCoffeeProductData = async () => {
     return productData;
   
 };
+
+getNomadCoffeeProductData()
 
 
 export default getNomadCoffeeProductData;

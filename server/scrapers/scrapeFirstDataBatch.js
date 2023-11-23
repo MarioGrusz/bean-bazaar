@@ -12,13 +12,13 @@ const runScrapingFunctions = async () => {
       const holaData = await getHolaCoffeeProductData();
       console.log('Hola Coffee scraping complete');
   
-      const nomadData = await getNomadCoffeeProductData();
+      //const nomadData = await getNomadCoffeeProductData();
       console.log('Nomad Coffee scraping complete');
   
       console.log('All scraping complete');
   
   
-      const coffeeData = [...tomaData, ...holaData, ...nomadData]; 
+      const coffeeData = [...tomaData, ...holaData]; 
       return coffeeData;
   
     } catch (error) {

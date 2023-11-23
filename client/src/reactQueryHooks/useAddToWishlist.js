@@ -2,22 +2,32 @@ import { useMutation, useQueryClient } from "react-query";
 import { addItemToWishlist } from "../api/apiWishlist";
 
 
-//optimistic updates https://www.phind.com/search?cache=jw8x9bseqf29cyc41qnmjiwe
-
 const useAddToWishlist = () => {
 
 
     const queryClient = useQueryClient();
-    return useMutation(({ id, token }) => addItemToWishlist(id, token), {
-        onSuccess: () => {
+    return useMutation(({ id, token, newItem }) => addItemToWishlist(id, token), {
+        onMutate : async (paramsObject) => {
+            await queryClient.cancelQueries('wishlistData');
+            const previousWishlistData = queryClient.getQueryData('wishlistData');
+            //console.log('Before mutation:', previousWishlistData);
+            const newWishlistItem = paramsObject.newItem;
+            queryClient.setQueryData('wishlistData', {
+                ...previousWishlistData,
+                data: [...previousWishlistData.data, newWishlistItem]
+            });
+            return { previousWishlistData, newWishlistItem };
+        },
+
+        onError: (err, newItem, context) => {
+            queryClient.setQueryData('wishlistData', context.previousWishlistData);
+        },
+        onSettled: () => {
+            //console.log('After mutation:', queryClient.getQueryData('wishlistData'));
             queryClient.invalidateQueries('wishlistData')
         }
+
     })
 }
 
 export default useAddToWishlist
-
-//To pass a second parameter to the useMutation function in React Query, 
-//you can use an object instead of multiple parameters. 
-//This is because useMutation only accepts one parameter for variables
-

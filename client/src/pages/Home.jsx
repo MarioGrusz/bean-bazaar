@@ -16,7 +16,7 @@ import { useEffect, useRef, useState } from 'react';
 
 const Home = () => {
 
-    const { user, logOut, token } = UserAuth();
+    const { user, token } = UserAuth();
     const navigate = useNavigate();
     const [page, setPage] = useState(1);
     const [sort, setSort] = useState('');   
@@ -31,6 +31,7 @@ const Home = () => {
         roastery: [],
         origin: [],
     });
+
 
     useEffect(() => {
         if (showFilterSidebar) {
@@ -57,13 +58,14 @@ const Home = () => {
       
     const { data: wishlistData, isLoading: isLoadingWishlistItems } = useGetWishlistItems(token, user);
 
+
     const coffeeItems = data?.data.docs || [];
     const wishlistItems = wishlistData?.data || [];
 
 
     const limit = data?.data.limit || null;
-    const paginationPage = data?.data.page || null;
     const total = data?.data.totalDocs || null;
+    const paginatedPage = data?.data.page || null;
 
     const renderContent = () => {
 
@@ -72,23 +74,21 @@ const Home = () => {
         };
 
         return <ItemCard 
-            products={coffeeItems} 
+            coffeeItems={coffeeItems} 
             wishlistItems={wishlistItems} 
             heartFill={heartFill}
             setHeartFill={setHeartFill}
         />
     };
 
-    // const content = coffeeItems.length === 0 ? <div>No Coffee Items Yet</div> : (
-    //     <ItemCard products={coffeeItems} wishlistItems={wishlistItems} heartFill={heartFill} setHeartFill={setHeartFill} />
-    // );
-      
-
     return (
 
         <main>
 
-            <Header toggleFilterNavbar={toggleFilterNavbar} />  
+            <Header 
+            toggleFilterNavbar={toggleFilterNavbar} 
+            wishlistItems={wishlistItems} 
+            />  
             <SearchBar search={search} setSearch={(search) => setSearch(search)} /> 
 
             <section className='display-used-filters'>
@@ -150,7 +150,7 @@ const Home = () => {
 
             <Pagination
               
-              data={coffeeItems}
+              coffeeItems={coffeeItems}
               page={page}
               limit={limit ? limit : 0}
               total={total ? total : 0}

@@ -63,19 +63,6 @@ const findPaginatedProducts = async (limit, page, filters, searchTerm, sort, isN
 };
 
 
-// const createCoffeeData = async () => {
-
-//     try{
-//         const productsData = await runScrapingFunctions();
-//         await CoffeeProduct.insertMany(productsData);
-
-//     } catch (error) {
-//         console.error(`Error in createCoffeeData: ${error.message}`);
-//     }
-
-// };
-
-//REFACTORED https://www.phind.com/search?cache=xj22uahztnz8ynj5jqj7irnj
 const createCoffeeData = async () => {
 
     try{

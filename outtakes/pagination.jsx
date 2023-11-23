@@ -3,7 +3,7 @@ import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
 import "./index.scss";
 import ReactPaginate from "react-paginate";
 
-const Pagination = ({ coffeeItems ,page ,total , limit, setPage }) => {
+const Pagination = ({ data ,page ,total , limit, setPage }) => {
 
 
   const totalPages = Math.ceil(total / limit);
@@ -20,15 +20,12 @@ const Pagination = ({ coffeeItems ,page ,total , limit, setPage }) => {
 
   return (
     <figure className="pagination">
-      {coffeeItems.length > 0 && (
+      {data.length > 0 && (
           <ReactPaginate
-
             previousLabel={<AiFillCaretLeft 
               className={`arrow${page > 1 ? "" : " disable"}`} />}
             nextLabel={<AiFillCaretRight className={page < totalPages ? "" : "disable"} />}
             breakLabel={"..."}
-
-
             pageCount={totalPages}
             pageRangeDisplayed={1}
             marginPagesDisplayed={1}
@@ -39,10 +36,6 @@ const Pagination = ({ coffeeItems ,page ,total , limit, setPage }) => {
             nextLinkClassName="page-num"
             breakLinkClassName="page-num"
             activeLinkClassName="active"
-            //page={page - 1}
-            forcePage={page -1}
-            activeClassName="active"
-            // disableInitialCallback={true}
           />
       )}
     </figure>

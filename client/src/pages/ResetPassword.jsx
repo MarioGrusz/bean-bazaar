@@ -10,19 +10,19 @@ const ResetPassword = () => {
     ];
 
     const { resetPassword, showSnackbar } = UserAuth();
-    const [email, setEmail] = useState("");
 
 
     const handleResetPassword = async (e) => { 
         e.preventDefault();
 
        try {
+            const { email  } = formData;
             await resetPassword(email); 
-            //showSnackbar( 'Check your email inbox for instructions' , 'success' );
+            showSnackbar( 'Check your email inbox for instructions' , 'success' );
                   
         } catch (error) {
             console.log(error)
-            //showSnackbar( 'Faild to reset password' , 'error' );
+            showSnackbar( 'Faild to reset password' , 'error' );
        }
     }
 

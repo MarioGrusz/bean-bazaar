@@ -2,11 +2,11 @@ import './index.scss'
 import { Link, useNavigate } from "react-router-dom"
 import { useEffect, useRef, useState } from 'react';
 import { UserAuth } from '../../context/AuthContext';
-//import Wishlist from '../Wishlist/wishlist';
 import filterIcon from '../../assets/icon-mobile-filters.svg'
+import Wishlist from '../Wishlist/Wishlist';
 
 
-const Header = ({ wishlistData, setWishlistData, toggleFilterNavbar }) => {
+const Header = ({ wishlistItems, toggleFilterNavbar }) => {
 
     const { user, logOut, showSnackbar } = UserAuth();
     const navbarRef = useRef(null);
@@ -18,10 +18,10 @@ const Header = ({ wishlistData, setWishlistData, toggleFilterNavbar }) => {
     const handleLogout = async () => {
         try {
           await logOut();
-          //showSnackbar( 'Logged out successfully' , 'success' );
+          showSnackbar( 'Logged out successfully' , 'success' );
         } catch (error) {
           console.log(error.message);
-          //showSnackbar( 'An error occured. Try again' , 'error' );
+          showSnackbar( 'An error occured. Try again' , 'error' );
         }
     };
 
@@ -104,13 +104,12 @@ const Header = ({ wishlistData, setWishlistData, toggleFilterNavbar }) => {
 
                 }
 
-                {/* wishlist popup */}
-                {/* <Wishlist 
-                wishlistData={wishlistData} 
-                setWishlistData={(wishlistData) => setWishlistData(wishlistData)} 
+                {/* wishlist sidebar */}
+                <Wishlist 
+                wishlistItems={wishlistItems}
                 openWishlist={openWishlist}
                 setOpenWishlist={(openWishlist) => setOpenWishlist(openWishlist)}
-                /> */}
+                />
 
             </div>
         
