@@ -17,8 +17,15 @@ import wishlistRoute from './routes/wishlist.js';
 import userRoute from './routes/user.js';
 import { createCoffeeData } from './services/coffeeItem.service.js';
 import errorHandler from './middleware/error.middleware.js';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-dotenv.config();
+
+//Load environment variables from .env file
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+dotenv.config({ path: path.resolve(__dirname, './.env') });
+
 
 const PORT = process.env.PORT || 5000;
 const app = express();
