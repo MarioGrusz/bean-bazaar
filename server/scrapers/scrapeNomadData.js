@@ -1,17 +1,11 @@
 import puppeteer from "puppeteer";
 import extractCoffeeOrigin from "../utils/extractCoffeeOrigin.js";
+import launchBrowserAndNewPage from "./helpers/launchBrowserAndNewPage .js";
 
 
 const getNomadCoffeeProductData = async () => {
 
-
-    const browser = await puppeteer.launch({
-        headless: 'new', 
-        defaultViewport: false,
-    });
-
-
-    const page = await browser.newPage();
+    const { browser, page } = await launchBrowserAndNewPage();
     await page.goto('https://nomadcoffee.es/en/product-category/coffee-en/');
 
     const productHandles = await page.$$('div.products > .col-md-4');

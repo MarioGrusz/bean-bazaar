@@ -1,17 +1,13 @@
 import puppeteer from "puppeteer";
 import extractCoffeeOrigin from "../utils/extractCoffeeOrigin.js";
 import url from 'url';
+import launchBrowserAndNewPage from "./helpers/launchBrowserAndNewPage .js";
 
 
 const getHolaCoffeeProductData = async () => {
 
+    const { browser, page } = await launchBrowserAndNewPage();
 
-    const browser = await puppeteer.launch({
-        headless: 'new', 
-        defaultViewport: false,
-    });
-
-    const page = await browser.newPage();
     await page.goto('https://hola.coffee/en/collections/cafe-en-grano-o-molido');
 
     const productHandles = await page.$$('#Collection > .grid--view-items > .grid__item');

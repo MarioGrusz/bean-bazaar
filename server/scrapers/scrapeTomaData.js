@@ -1,16 +1,11 @@
 import puppeteer from "puppeteer";
 import extractCoffeeOrigin from "../utils/extractCoffeeOrigin.js";
+import launchBrowserAndNewPage from "./helpers/launchBrowserAndNewPage .js";
 
 
 const getTomaCoffeeProductData = async () => {
 
-
-    const browser = await puppeteer.launch({
-        headless: 'new', 
-        defaultViewport: false,
-    });
-
-    const page = await browser.newPage();
+    const { browser, page } = await launchBrowserAndNewPage();
     await page.goto('https://toma.cafe/en/shop/cafe');
 
     const productHandles = await page.$$('section.svelte-vz66ne:nth-child(1) > .grid.svelte-86dgh1 > a.svelte-86dgh1');
