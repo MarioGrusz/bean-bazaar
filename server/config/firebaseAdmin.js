@@ -1,12 +1,8 @@
 import admin from 'firebase-admin';
-import * as dotenv from 'dotenv';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import loadEnv from '../utils/loadEnv.js';
 
 //Load environment variables from .env file
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-dotenv.config({ path: path.resolve(__dirname, '../.env') });
+loadEnv('../.env');
 
 // Use the GOOGLE_APPLICATION_CREDENTIALS environment variable
 const serviceAccount = JSON.parse(process.env.FIREBASE_ADMIN_SDK);

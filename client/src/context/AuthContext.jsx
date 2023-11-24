@@ -28,16 +28,21 @@ export const AuthContextProvider = ({ children }) => {
     setSnackbar({ show: false, message: '', type: '' });
   };
 
-
   const createUser = async (email, password, name) => {
     try {
-      await createUserWithEmailAndPassword(auth, email, password).catch((err) =>
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password).catch((err) =>
         console.log(err)
       );
-    
-      await updateProfile(auth.currentUser, { displayName: name }).catch(
-        (err) => console.log(err)
-      );
+   
+      if (userCredential) {
+        const user = userCredential.user;
+   
+        await updateProfile(user, { displayName: name }).catch(
+          (err) => console.log(err)
+        );
+   
+        await createUserInDatabse(user);
+      }
     } catch (err) {
       console.log(err);
     }
@@ -53,17 +58,21 @@ export const AuthContextProvider = ({ children }) => {
     }
   };
 
-
   const googleSignIn = async () => {
     const provider = new GoogleAuthProvider();
-
+   
     try {
-      await signInWithPopup(auth, provider);
+      const userCredential = await signInWithPopup(auth, provider);
+      const user = userCredential.user;
+   
+      if (user) {
+        await createUserInDatabse(user);
+      }
     } catch (error) {
-      
       console.error('Google sign-in error:', error);
     }
-  };   
+   };
+   
 
   const logOut = () => {
     signOut(auth)
@@ -76,13 +85,9 @@ export const AuthContextProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
-        createUserInDatabse(currentUser);
-
         currentUser.getIdToken().then((idToken) => {
           setUser(currentUser);
-          //console.log(currentUser)
           setToken(idToken);
-          //console.log('idToken', idToken)
         });
       } else {
         setUser(null);

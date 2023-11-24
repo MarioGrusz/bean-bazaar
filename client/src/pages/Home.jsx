@@ -6,6 +6,7 @@ import Header from '../components/Header/Header';
 import Sort from '../components/Sort/Sort';
 import SidebarHeader from '../components/SidebarHeader/SidebarHeader';
 import SidebarFooter from '../components/SidebarFooter/SidebarFooter';
+import Footer from '../components/Footer/Footer';
 import Pagination from '../components/Pagination/Pagination';
 import { UserAuth } from '../context/AuthContext';
 import useGetCoffeeItems from '../reactQueryHooks/useGetCoffeeItems';
@@ -65,13 +66,17 @@ const Home = () => {
 
     const limit = data?.data.limit || null;
     const total = data?.data.totalDocs || null;
-    const paginatedPage = data?.data.page || null;
 
     const renderContent = () => {
 
-        if(coffeeItems.length === 0) {
-            return <div>No Coffee Items Yet</div>
+        if(isLoadingCoffeeItems) {
+            return <div className='loading'>Wait! We roasting now...</div>
         };
+
+        if(coffeeItems.length === 0) {
+            return <div className='no-products'>No Products Found! Try again!</div>
+        };
+
 
         return <ItemCard 
             coffeeItems={coffeeItems} 
@@ -157,6 +162,8 @@ const Home = () => {
               setPage={(page) => setPage(page)}
              
             />
+
+            <Footer />
 
         </main>
     )

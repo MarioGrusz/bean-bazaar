@@ -20,6 +20,24 @@ body {
   padding-right: 17px;
 }
 
+.loading,
+.no-products {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-size: 3rem;
+  padding-top: 6rem;
+}
+
+.fallback {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
+}
+
 .main {
   min-height: 100vh;
   position: relative;
@@ -224,6 +242,10 @@ PRIVACY POLICY PAGE
   }
 }
 
+/**
+PAGE NOT FOUND
+**/
+
 .page-not-found {
   overflow: hidden;
   height: 100vh;
@@ -243,6 +265,81 @@ PRIVACY POLICY PAGE
 
     p {
       font-size: 5rem;
+    }
+  }
+}
+
+/**
+CONTACT PAGE
+**/
+
+.contact-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 5rem 5rem 0 5rem;
+
+  @include mq(tablet, max) {
+    padding: 0 3rem;
+  }
+
+  @include mq(phone, max) {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  &__return-arrow-container {
+    height: 2rem;
+  }
+
+  &__left-side {
+    flex: 30%;
+
+    @include mq(tablet, max) {
+      flex: 40%;
+    }
+
+    @include mq(phone, max) {
+      flex: 100%;
+    }
+  }
+
+  &__header {
+    font-size: 3rem;
+    font-weight: 400;
+
+    @include mq(phone, max) {
+      font-size: 2.5rem;
+      padding: 0 1rem;
+    }
+  }
+
+  &__paragraph {
+    font-size: 1.3rem;
+    margin-top: 3rem;
+
+    @include mq(phone, max) {
+      margin-top: 1rem;
+      font-size: 1rem;
+      padding: 0 1rem;
+    }
+  }
+
+  &__right-side {
+    flex: 60%;
+    margin-left: 8rem;
+
+    @include mq(tablet, max) {
+      flex: 60%;
+      margin-left: 0;
+      padding: 1rem 3rem;
+    }
+
+    @include mq(phone, max) {
+      flex: 100%;
+      margin-left: 0;
+      padding: 1rem;
     }
   }
 }

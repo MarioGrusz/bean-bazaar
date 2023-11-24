@@ -7,35 +7,54 @@
     padding: 0;
   }
 
-  input {
-    //margin-top: 1rem;
-    border-bottom: solid 1px $primaryBlackColor;
-    height: 65px;
-    width: 100%;
-    color: $primaryBlackColor;
-    background: transparent;
-    font-size: 1.5rem;
-    line-height: 1.8rem;
-
-    @include mq(phone, max) {
-      height: 45px;
-      font-size: 1.2rem;
-      line-height: 1.5rem;
-      border: solid 1px $primaryBlackColor;
-      border-radius: 4px;
-      padding: 0 0.5rem;
-    }
-  }
-
-  input:focus {
-    outline: none;
-  }
-
   &__input-wrapper {
     position: relative;
 
     @include mq(phone, max) {
       margin-bottom: 1rem;
+    }
+
+    textarea {
+      margin-top: 1rem;
+      border-bottom: solid 1px $primaryBlackColor;
+      height: 10rem;
+      width: 100%;
+      color: $primaryBlackColor;
+      font-size: 1.5rem;
+      line-height: 1.8rem;
+      outline: none;
+
+      @include mq(phone, max) {
+        font-size: 1.2rem;
+        line-height: 1.5rem;
+        border: solid 1px $primaryBlackColor;
+        border-radius: 4px;
+        padding: 0 0.5rem;
+      }
+    }
+
+    input {
+      //margin-top: 1rem;
+      border-bottom: solid 1px $primaryBlackColor;
+      height: 65px;
+      width: 100%;
+      color: $primaryBlackColor;
+      background: transparent;
+      font-size: 1.5rem;
+      line-height: 1.8rem;
+
+      @include mq(phone, max) {
+        height: 45px;
+        font-size: 1.2rem;
+        line-height: 1.5rem;
+        border: solid 1px $primaryBlackColor;
+        border-radius: 4px;
+        padding: 0 0.5rem;
+      }
+    }
+
+    input:focus {
+      outline: none;
     }
   }
 

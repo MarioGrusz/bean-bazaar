@@ -9,22 +9,19 @@
 
 import express from 'express';
 import cors from 'cors';
-import * as dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import connectDB from './config/database.js';
 import productRoute from './routes/product.js';
 import wishlistRoute from './routes/wishlist.js';
+import emailRoute from './routes/email.js';
 import userRoute from './routes/user.js';
 import { createCoffeeData } from './services/coffeeItem.service.js';
 import errorHandler from './middleware/error.middleware.js';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import loadEnv from './utils/loadEnv.js';
 
 
 //Load environment variables from .env file
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-dotenv.config({ path: path.resolve(__dirname, './.env') });
+loadEnv('./.env');
 
 
 const PORT = process.env.PORT || 5000;
@@ -38,6 +35,7 @@ app.use(cookieParser());
 app.use('/api/v1/user', userRoute);
 app.use('/api/v1/data', productRoute);
 app.use('/api/v1/wishlist', wishlistRoute);
+app.use('/api/v1/contact', emailRoute);
 
 app.use(errorHandler)
 
@@ -45,7 +43,7 @@ app.get('/', (req, res) => {
     res.send('HELLO FROM BEAN SEARCHER ENGINE!');
 });
 
-
+//schedule function https://www.phind.com/search?cache=xcb58rkwyzs0wim8y8tzqy3z
 
 const runDataCreationBasedOnCondition = async () => {
 

@@ -18,6 +18,7 @@ const LoginPage = lazy(() => import("./pages/LoginPage"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const ResetPassword = lazy(() => import("./pages/ResetPassword"));
 const PageNotFound = lazy(() => import("./pages/PageNotFound"));
+const ContactPage = lazy(() => import("./pages/ContactPage"));
 
 
 
@@ -36,7 +37,7 @@ function App() {
   
   return (
     <QueryClientProvider client={queryClient}>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div className="fallback">Loading...</div>}>
         <Routes>
 
           {/* public routes */}
@@ -48,6 +49,10 @@ function App() {
           
           {/* page not found */}
           <Route path="*" element={<PageNotFound />} />
+
+          {/* contact page */}
+          <Route path="/contact" element={<ContactPage />} />
+      
       
         </Routes>
         <Snackbar />

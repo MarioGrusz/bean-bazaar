@@ -1,49 +1,53 @@
-import puppeteer from "puppeteer";
-import extractCoffeeOrigin from "../utils/extractCoffeeOrigin.js";
 import launchBrowserAndNewPage from "./helpers/launchBrowserAndNewPage .js";
+import url from 'url';
+
+
+//refactored https://www.phind.com/search?cache=tq9hxz0nk4f3pyzyxop868kl
 
 
 const getNomadCoffeeProductData = async () => {
 
-    const { browser, page } = await launchBrowserAndNewPage();
-    await page.goto('https://nomadcoffee.es/en/product-category/coffee-en/');
-
-    const productHandles = await page.$$('div.products > .col-md-4');
-    const productHandlesToScrape = productHandles.slice(0, -3);
-    //const shopName = await page.$eval('.text-center > a', (el) => el.textContent);
-
     const productData = [];
+    const baseUrl = 'https://nomadcoffee.es';
 
-    for(const producthandle of productHandlesToScrape) {
+    const { browser, page } = await launchBrowserAndNewPage();
+    await page.goto('https://nomadcoffee.es/en/collections/our-coffees');
+    const productHandles = await page.$$('#MainContent > .shopify-section > .collection-list > .grid > .item');
+   
+    const shopName = await page.$eval('#nav > .text-center > div > p', (el) => el.textContent.trim());   
+
+    for(const producthandle of productHandles){
 
         try{
 
-            const productNameElement = await producthandle.$('.origen');
-            const productPriceElement = await producthandle.$('bdi:nth-child(1)');
-            let productName;
-            let productPrice;
 
-            if (productNameElement) {
-                const productNameString = await productNameElement.evaluate((el) => el.textContent.trim());
-                productName = productNameString.replace(/\s+/g, ' ').trim();
+            const productImage = await producthandle.$eval('.product-single__thumbnail-image', (el) => el.getAttribute('src'));
+            const relativeLink = await producthandle.$eval('a', (el) => el.getAttribute('href'));
+            const productLink = url.resolve(baseUrl, relativeLink)
+
+            let productSecondNameString
+
+            const productPriceElement = await producthandle.$('.text-right');
+            const productPriceRange = await productPriceElement.evaluate((el) => el.textContent.trim());
+            const prices = productPriceRange.split(" - ");
+            const firstPrice = prices[0];
+            const priceInNumber = parseFloat(firstPrice.replace("€", ""));
+            const productPrice = priceInNumber + " €";
+
+
+            const productFirstNameElement = await producthandle.$('.notranslate > span > h3');
+            const productFirstNameString = await productFirstNameElement.evaluate((el) => el.textContent.trim());
+            const productSecondNameElement = await producthandle.$('.notranslate > span > h3:nth-child(2)');
+            if (productSecondNameElement) {
+                productSecondNameString = await productSecondNameElement.evaluate((el) => el.textContent.trim());
             } else {
                 continue
             }
-
-            if (productPriceElement) {
-                productPrice = await productPriceElement.evaluate((el) => el.textContent.trim());
-            } else {
-                continue
-            }
-
-            const productImage = await producthandle.$eval('img', (el) => el.getAttribute('src'));
-            const productLink = await producthandle.$eval('a', (el) => el.getAttribute('href'));
-
-            
-            const productOrigin = extractCoffeeOrigin(productName);
+            const productName = `${productFirstNameString} ${productSecondNameString}`;
+            const productOrigin = productFirstNameString;
 
             productData.push({
-                //shopName,
+                shopName,
                 productName,
                 productPrice,
                 productImage,
@@ -51,19 +55,17 @@ const getNomadCoffeeProductData = async () => {
                 productOrigin, 
             });
 
-
-        } catch (error) {
+        } catch (error){
             console.log(error)
         }
 
-    };
+
+    }
     
     await browser.close();
     return productData;
   
 };
-
-getNomadCoffeeProductData()
 
 
 export default getNomadCoffeeProductData;

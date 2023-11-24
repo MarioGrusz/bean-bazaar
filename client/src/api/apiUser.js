@@ -3,6 +3,7 @@ import apiRequest from './helpers/apiRequest';
 
 
 const createUserInDatabse = async (user) => {
+    console.log('apiuser', user)
     return apiRequest(`${BASE_URL}/user`, 'POST' , null, { name: user.displayName, email: user.email, firebaseId: user.uid })
 };
 

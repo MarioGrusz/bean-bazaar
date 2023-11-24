@@ -1,0 +1,25 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.footer {
+  height: 20vh;
+  border-top: 1px solid $primaryGreyColor;
+  width: 80%;
+  margin-inline: auto;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  button {
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  &__copyright {
+    font-size: 0.8rem;
+    font-weight: 300;
+    text-align: center;
+  }
+}

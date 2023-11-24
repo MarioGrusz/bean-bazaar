@@ -66,22 +66,34 @@ const findPaginatedProducts = async (limit, page, filters, searchTerm, sort, isN
 const createCoffeeData = async () => {
 
     try{
-        const productsData = await runScrapingFunctions();
+        const newCoffeeData = await runScrapingFunctions();
 
-        const roasteryOptions = ["Hola Coffee Roasters", "NOMAD", "Toma Café"];
         const oldCoffeeData = await CoffeeProduct.find({});
 
-        productsData.forEach((coffee) => {
-            const existsInOldData = oldCoffeeData.some((oldCoffee) => oldCoffee.productLink === coffee.link);
-            if (!existsInOldData) {
-              coffee.class = 'new';
-            }
+        // Step 1: If an item in newCoffeeData is equal to an item from oldCoffeeData, remove it form newCoffeeData
+        const newCoffeeDataToInsert = newCoffeeData.filter(newCoffee => 
+            !oldCoffeeData.some(oldCoffee => oldCoffee.productLink === newCoffee.productLink)
+        );
+
+        // Step 2: Set class to 'new'    
+        newCoffeeDataToInsert.forEach((coffee) => {
+            coffee.class = 'new';
         });
 
-        for (const roastery of roasteryOptions) {
-            await CoffeeProduct.deleteMany({ shopName: roastery });
+        // Step 3: If an item is in oldCoffeeData but not in newCoffeeData, remove it from oldCoffeeData
+        const itemsToRemoveFromOldData = oldCoffeeData.filter((oldCoffee) => {
+            return !newCoffeeData.some((coffee) => coffee.productLink === oldCoffee.productLink);
+        });
+
+        for (const itemToRemove of itemsToRemoveFromOldData) {
+            await CoffeeProduct.deleteMany({ productLink: itemToRemove.productLink });
         }
-        const result = await CoffeeProduct.insertMany(productsData);
+
+        //Step 4: remove class 'new' from oldProductData
+        await CoffeeProduct.updateMany({}, { $set: { class: '' } });
+
+        // Step 5: Insert newCoffeeData
+        const result = await CoffeeProduct.insertMany(newCoffeeDataToInsert);
 
         console.log(`${result.length} documents were inserted into the collection.`);
 

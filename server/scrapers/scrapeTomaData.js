@@ -1,4 +1,3 @@
-import puppeteer from "puppeteer";
 import extractCoffeeOrigin from "../utils/extractCoffeeOrigin.js";
 import launchBrowserAndNewPage from "./helpers/launchBrowserAndNewPage .js";
 
