@@ -12,13 +12,11 @@ const PageNotFound = () => {
     }, [])
 
     return (
-        <main className='page-not-found'>
-            <div className='page-not-found__container'>
-                <h1>404</h1>
-                <p>Oops! The page was not found...</p>
-                <div className='page-not-found__round-element'></div>
-            </div>
-        </main>
+      <main className='page-not-found'>
+        <h1>404</h1>
+        <p>Oops!</p>
+        <p>The page was not found...</p>
+      </main>
     )
 }
 

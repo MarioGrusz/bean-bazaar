@@ -11,15 +11,29 @@
   justify-content: space-between;
   align-items: center;
 
+  @include mq(phone, max) {
+    border-top: none;
+    flex-direction: column;
+    gap: 1rem;
+    height: 10vh;
+    width: 90%;
+  }
+
   button {
     font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
+    flex: 1;
   }
 
   &__copyright {
     font-size: 0.8rem;
     font-weight: 300;
     text-align: center;
+
+    @include mq(phone, max) {
+      flex: 2;
+      font-size: 0.6rem;
+    }
   }
 }

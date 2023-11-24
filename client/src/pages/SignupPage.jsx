@@ -32,7 +32,7 @@ const SignupPage = () => {
     return (
         <main className="authorization">
 
-            <ReturnArrow to="/" />
+            <ReturnArrow to="/login" />
 
 
             <section className="authorization__container">

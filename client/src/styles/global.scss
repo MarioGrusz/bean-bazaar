@@ -28,6 +28,10 @@ body {
   align-items: flex-start;
   font-size: 3rem;
   padding-top: 6rem;
+
+  @include mq(phone, max) {
+    font-size: 2rem;
+  }
 }
 
 .fallback {
@@ -36,6 +40,10 @@ body {
   justify-content: center;
   align-items: center;
   font-size: 5rem;
+
+  @include mq(phone, max) {
+    font-size: 3rem;
+  }
 }
 
 .main {
@@ -45,6 +53,10 @@ body {
   flex-direction: column;
 
   padding: 0 2rem;
+
+  @include mq(phone, max) {
+    padding: 0;
+  }
 }
 
 .display-used-filters {
@@ -248,23 +260,30 @@ PAGE NOT FOUND
 
 .page-not-found {
   overflow: hidden;
-  height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  max-height: 100vh;
+  height: 100vh;
 
-  &__container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  @include mq(phone, max) {
+    border: 1px solid green;
+  }
 
-    h1 {
-      font-size: 15rem;
+  h1 {
+    font-size: 15rem;
+
+    @include mq(phone, max) {
+      font-size: 10rem;
     }
+  }
 
-    p {
-      font-size: 5rem;
+  p {
+    font-size: 4rem;
+
+    @include mq(phone, max) {
+      font-size: 1.8rem;
     }
   }
 }

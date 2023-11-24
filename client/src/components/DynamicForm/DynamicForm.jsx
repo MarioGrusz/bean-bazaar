@@ -64,7 +64,7 @@ const DynamicForm = ({ inputFields, handleSubmit, showForgotPassword, showPrivac
 
      {showForgotPassword && (
        <p className="forgot-password">
-         <Link to="/reset" className="forgot-password-link">Forgot Your Password?</Link>
+         <Link to="/reset-password" className="forgot-password-link">Forgot Your Password?</Link>
        </p>
      )}
 
