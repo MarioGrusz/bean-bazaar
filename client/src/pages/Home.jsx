@@ -33,6 +33,11 @@ const Home = () => {
         origin: [],
     });
 
+    useEffect(() => {
+        const storedPage = localStorage.getItem('currentPage');
+        storedPage !== null ? setPage(parseInt(storedPage)) : setPage(1)     
+    }, [])
+
 
     useEffect(() => {
         if (showFilterSidebar) {

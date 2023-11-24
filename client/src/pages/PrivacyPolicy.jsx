@@ -8,10 +8,9 @@ const PrivacyPolicy = () => {
         <div className='privacy-policy-page__separator'></div>
         <strong>Privacy Policy</strong> 
         <p>
-            Mario Cesar built the Bean-Scraper app as
-            [open source/free/freemium/ad-supported/commercial] app. This SERVICE is provided by
-            Mario Cesar at no cost and is intended for use as
-            is.
+            Mario Cesar built the Bean Bazaar app as
+            open source app. This SERVICE is provided by
+            Mario Cesar at no cost and is intended for use as is.
         </p> 
         <p>
             This page is used to inform visitors regarding my

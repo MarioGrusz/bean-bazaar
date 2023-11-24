@@ -12,7 +12,7 @@ const Footer = () => {
             <Link to='/contact'>
                 <button>Contact Us</button>
             </Link>
-            <div className='footer__copyright'>Copyright © {currentYear}. Bean Searcher. All rights reserved.</div>
+            <div className='footer__copyright'>Copyright © {currentYear}. Bean Bazaar. All rights reserved.</div>
         </footer>
     )
 }
