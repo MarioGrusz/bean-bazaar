@@ -20,7 +20,7 @@ const ResetPassword = lazy(() => import("./pages/ResetPassword"));
 const PageNotFound = lazy(() => import("./pages/PageNotFound"));
 const ContactPage = lazy(() => import("./pages/ContactPage"));
 
-
+//make description later
 
 const queryClient = new QueryClient({
   defaultOptions: {
