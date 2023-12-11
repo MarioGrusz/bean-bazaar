@@ -1,0 +1,126 @@
+import extractCoffeeOrigin from "../utils/extractCoffeeOrigin.js";
+import launchBrowserAndNewPage from "./helpers/launchBrowserAndNewPage .js";
+
+//node  scrapeFriedhats.js
+
+
+const getFriedhatsProductData = async () => {
+
+    const { browser, page } = await launchBrowserAndNewPage();
+    await page.goto('https://friedhats.com/pages/shop');
+
+    const productHandles = await page.$$('main > .main-content > .grid > .grid-uniform > .grid__item');
+
+
+    for(const producthandle of productHandles) {
+
+
+        console.log('for loop invoked')
+
+
+        try{
+
+            const linkHandle = await page.evaluateHandle(product => product.querySelector('a'), producthandle);
+            const linkElement = linkHandle.asElement();
+            const link = await page.evaluate(link => link.href, linkElement);
+            //console.log(link)
+
+
+            await page.goto(link);
+            console.log('goto')
+            //const title = await page.$eval('.product-origin', el => el.textContent);
+            //console.log(title);
+
+            await page.goBack();
+            console.log('goback')
+            
+
+       
+
+             // Click on the link
+            //await linkHandle.click();
+            // await page.waitForNavigation();
+
+            // const currentUrl = await page.url();
+            // console.log(currentUrl);
+
+
+                 //const productName = await producthandle.$eval('.product-title', (el) => el.textContent)
+
+            //console.log(link)
+
+            // Wait for the product information to be loaded
+            // await page.waitForSelector('.product-origin'); //.template-product
+
+            // await page.waitForSelector('.template-product');
+
+            // const productName = await page.$eval('.product-origin', (el) => el.textContent)
+            // console.log(productName)
+            //await page.waitForNavigation();
+
+
+            // await page.waitForSelector('.product-origin');
+
+            // const productName = await page.$eval('.product-origin', (el) => el.textContent)
+            // console.log(productName)
+
+            
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+
+    // for (let product of products) {
+    //     await product.click();
+    //     await page.waitForNavigation();
+    //     const productInfo = await page.evaluate(() => {
+    //       // replace 'selector' with the actual selector of the product information
+    //       const infoElement = document.querySelector('selector');
+    //       return infoElement ? infoElement.textContent : null;
+    //     });
+    //     console.log(productInfo);
+    // }
+       
+
+
+    //const productHandles = await page.$$('section.svelte-vz66ne:nth-child(1) > .grid.svelte-86dgh1 > a.svelte-86dgh1');
+    
+
+
+    // const productData = [];
+
+    // for(const producthandle of productHandles) {
+
+    //     try{
+
+        
+            
+
+    //         // productData.push({
+    //         //     shopName,
+    //         //     productName,
+    //         //     productOrigin,
+    //         //     productPrice,
+    //         //     productImage,
+    //         //     productLink,
+                 
+    //         // });
+
+
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+
+    // }
+    
+
+    await browser.close();
+    //return productData;
+
+};
+
+getFriedhatsProductData()
+
+export default getFriedhatsProductData;

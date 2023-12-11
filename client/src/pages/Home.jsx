@@ -8,6 +8,7 @@ import SidebarHeader from '../components/SidebarHeader/SidebarHeader';
 import SidebarFooter from '../components/SidebarFooter/SidebarFooter';
 import Footer from '../components/Footer/Footer';
 import Pagination from '../components/Pagination/Pagination';
+import Marquee from '../components/Marquee/Marquee';
 import { UserAuth } from '../context/AuthContext';
 import useGetCoffeeItems from '../reactQueryHooks/useGetCoffeeItems';
 import useGetWishlistItems from '../reactQueryHooks/useGetWishlistItems';
@@ -99,6 +100,7 @@ const Home = () => {
             toggleFilterNavbar={toggleFilterNavbar} 
             wishlistItems={wishlistItems} 
             />  
+            {/* <Marquee /> */}
             <SearchBar search={search} setSearch={(search) => setSearch(search)} /> 
 
             <section className='display-used-filters'>

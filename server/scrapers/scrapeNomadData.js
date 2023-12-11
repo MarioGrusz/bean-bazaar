@@ -1,5 +1,6 @@
 import launchBrowserAndNewPage from "./helpers/launchBrowserAndNewPage .js";
 import url from 'url';
+import extractCoffeeOrigin from "../utils/extractCoffeeOrigin.js";
 
 
 //refactored https://www.phind.com/search?cache=tq9hxz0nk4f3pyzyxop868kl
@@ -14,7 +15,8 @@ const getNomadCoffeeProductData = async () => {
     await page.goto('https://nomadcoffee.es/en/collections/our-coffees');
     const productHandles = await page.$$('#MainContent > .shopify-section > .collection-list > .grid > .item');
    
-    const shopName = await page.$eval('#nav > .text-center > div > p', (el) => el.textContent.trim());   
+    //const shopName = await page.$eval('#nav > .text-center > div > p', (el) => el.textContent.trim());  
+    const shopName = 'Nomad Coffee'
 
     for(const producthandle of productHandles){
 
@@ -44,7 +46,7 @@ const getNomadCoffeeProductData = async () => {
                 continue
             }
             const productName = `${productFirstNameString} ${productSecondNameString}`;
-            const productOrigin = productFirstNameString;
+            const productOrigin = extractCoffeeOrigin(productFirstNameString)
 
             productData.push({
                 shopName,

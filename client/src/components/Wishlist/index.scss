@@ -118,6 +118,10 @@
   &__text-wrapper {
     display: flex;
     width: 20rem;
+
+    @include mq(phone, max) {
+      width: initial;
+    }
   }
 
   &__text {

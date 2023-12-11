@@ -9,12 +9,13 @@ const getTomaCoffeeProductData = async () => {
 
     const productHandles = await page.$$('section.svelte-vz66ne:nth-child(1) > .grid.svelte-86dgh1 > a.svelte-86dgh1');
     const productHandlesToScrape = productHandles.slice(2);
-    const shopNameString = await page.$eval('.column.svelte-1i6cx3 > p', (el) => el.textContent);
+    const shopName = await page.$eval('.column.svelte-1i6cx3 > p', el => {
+        const input = el.textContent;
+        const pattern = / - (.+)$/;
+        const result = input.match(pattern);
+        return result ? result[1] : '';
 
-    //Regex extract shop name
-    const pattern = / - (.+)$/;
-    const result = shopNameString.match(pattern);
-    const shopName = result ? result[1] : '';
+    });
 
 
     const productData = [];

@@ -29,7 +29,7 @@ const extractCoffeeOrigin = (productName) => {
       origin = originMap[origin];
     }
     
-    return origin;
+    return origin.toLowerCase();
 };
 
 export default extractCoffeeOrigin;

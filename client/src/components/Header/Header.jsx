@@ -64,7 +64,7 @@ const Header = ({ wishlistItems, toggleFilterNavbar }) => {
         <header  ref={navbarRef} className={`header ${isGlassmorphism ? 'glassmorphism' : ''}`}>
 
             <div className='header__title-wrapper'>                
-                <h1 className='header__title-link'>Bean Searcher</h1>            
+                <h1 className='header__title-link'>Bean Bazaar</h1>            
             </div>
 
             <div className='header__buttons-wrapper'>

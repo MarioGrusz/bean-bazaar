@@ -12,7 +12,8 @@ const getHolaCoffeeProductData = async () => {
     const productHandles = await page.$$('#Collection > .grid--view-items > .grid__item');
     const productHandlesToScrape = productHandles.slice(2, -1);
 
-    const shopName = await page.$eval('.site-footer__copyright-content > a', (el) => el.textContent);
+    //const shopName = await page.$eval('.site-footer__copyright-content > a', (el) => el.textContent);
+    const shopName = 'Hola Coffee';
 
     const baseUrl = 'https://shop.hola.coffee';
     const productData = [];
