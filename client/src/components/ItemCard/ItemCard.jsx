@@ -1,10 +1,12 @@
 import './index.scss';
 import { Link } from 'react-router-dom';
 import AddToWishlistBtn from '../AddToWishlistBtn/AddToWishlistBtn';
+import { UserAuth } from '../../context/AuthContext';
 
 const ItemCard = (props) => {
 
   const { coffeeItems, wishlistItems, heartFill, setHeartFill} = props;
+  const { user } = UserAuth();
 
   return (
     <section className='coffee-table'>
@@ -29,7 +31,7 @@ const ItemCard = (props) => {
                   <img src={product.productImage} alt="product" />
   
                   <AddToWishlistBtn
-                    heartFill={Array.isArray(wishlistItems) && wishlistItems.length > 0 && wishlistItems.some(item => item._id === product._id)}
+                    heartFill={user && Array.isArray(wishlistItems) && wishlistItems.length > 0 && wishlistItems.some(item => item._id === product._id)}
 
                     setHeartFill={setHeartFill}
                     coffeeItems={coffeeItems}
