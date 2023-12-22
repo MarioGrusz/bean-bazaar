@@ -36,15 +36,15 @@
     input {
       //margin-top: 1rem;
       border-bottom: solid 1px $primaryBlackColor;
-      height: 65px;
+      height: 4rem;
       width: 100%;
       color: $primaryBlackColor;
       background: transparent;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       line-height: 1.8rem;
 
       @include mq(phone, max) {
-        height: 45px;
+        height: 2.8rem;
         font-size: 1.2rem;
         line-height: 1.5rem;
         border: solid 1px $primaryBlackColor;
@@ -60,17 +60,18 @@
 
   &__password-eye {
     position: absolute;
-    top: 20px;
+    top: 1.25rem;
     right: 0px;
-    height: 35px;
-    width: 60px;
+
+    height: 2rem;
+    width: 3.75rem;
     cursor: pointer;
     border: none;
 
     @include mq(phone, max) {
-      height: 25px;
-      width: 40px;
-      top: 15px;
+      height: 1.6rem;
+      width: 2.5rem;
+      top: 1rem;
     }
   }
 }
@@ -83,7 +84,7 @@
   label,
   a {
     @include mq(phone, max) {
-      font-size: 0.8rem;
+      font-size: 0.7rem;
     }
   }
 }

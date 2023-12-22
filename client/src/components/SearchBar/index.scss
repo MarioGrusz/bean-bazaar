@@ -5,11 +5,15 @@
   display: flex;
   position: relative;
   align-items: center;
-  width: 50%;
+  //width: calc(95% - 2rem);
+  width: 95%;
   padding: $spacingHorizontalSmall;
   height: 3rem;
-  margin-left: 1.5rem;
   margin-top: 3rem;
+
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 3rem;
 
   @include mq(tablet-wide, max) {
     width: 90%;

@@ -12,10 +12,10 @@
   }
 
   &__item-row {
-    margin-bottom: 45px;
+    margin-bottom: 2.8rem;
     padding-right: 2rem;
     width: calc(33% - 20px);
-    min-width: 400px;
+    min-width: 25rem;
 
     @include mq(phone, max) {
       padding-right: 0;

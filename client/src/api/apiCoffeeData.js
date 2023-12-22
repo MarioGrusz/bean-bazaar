@@ -6,7 +6,6 @@ const getAllCoffeeItems = async (params) => {
     return apiRequest(`${BASE_URL}/data`, 'GET', null, null, params);
 };
 
-
 const getCoffeeOriginsHeaders = async (params) => {
     return apiRequest(`${BASE_URL}/data/origins`, 'GET', null, null, params);
 };

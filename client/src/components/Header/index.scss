@@ -19,7 +19,7 @@
   }
 
   &__title-wrapper {
-    padding: 0.5rem 0;
+    padding: 0.5rem;
     position: relative;
 
     @include mq(tablet-wide, max) {
@@ -28,8 +28,10 @@
     }
   }
 
-  &__title-link h1 {
-    font-size: $headlineSmall;
+  &__title-link {
+    font-size: $averageSize;
+    //font-size: 10rem;
+    font-weight: 700;
   }
 
   &__buttons-wrapper {

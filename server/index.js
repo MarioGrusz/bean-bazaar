@@ -43,11 +43,10 @@ app.get('/', (req, res) => {
     res.send('HELLO FROM BEAN SEARCHER ENGINE!');
 });
 
-//schedule function https://www.phind.com/search?cache=xcb58rkwyzs0wim8y8tzqy3z
 
 const runDataCreationBasedOnCondition = async () => {
 
-    const shouldRunDataCreation = false; // Replace with your condition
+    const shouldRunDataCreation = false; 
     
     if (shouldRunDataCreation) {
          createCoffeeData()

@@ -2,27 +2,31 @@ import './index.scss';
 import useAddToWishlist from '../../reactQueryHooks/useAddToWishlist';
 import useDeleteWishlistItem from '../../reactQueryHooks/useDeleteWishlistItem';
 import { UserAuth } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 
 const AddToWishlistBtn = ({ heartFill, setHeartFill, coffeeItems }) => {
 
     const addToWishlistMutation = useAddToWishlist();
     const deleteWishlistItemMutation = useDeleteWishlistItem();
-    const { token } = UserAuth();
+    const { token, user } = UserAuth();
+    const navigate = useNavigate();
 
 
-
-    const handleClick = (event) => {
+    const handleClick = async (event) => {
         const productElement = event.target.closest('.coffee-table__product');
         const productId = productElement ? productElement.id : null;
         const newItem = coffeeItems?.find(item => item._id === productId);
-
-    
-        if (productId, newItem) {
+     
+        if (!user) {
+            navigate('/login');
+        } else if (productId && newItem) {
             performMutation(productId, newItem);
             setHeartFill(!heartFill);
+     
         }
-    }
+    };
+     
     
 
     const performMutation = (productId, newItem) => {

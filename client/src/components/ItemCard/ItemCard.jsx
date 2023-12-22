@@ -52,7 +52,9 @@ const ItemCard = (props) => {
                   </div>
                   <div className='button-wrapper'>
                     <button className='go-to-shop-btn'>
-                      <Link to={product.productLink}>GO TO THE SHOP</Link>
+                      <Link to={product.productLink} target="_blank" rel="noopener noreferrer">
+                        GO TO THE SHOP
+                      </Link>
                     </button>
                   </div>
                 </div>

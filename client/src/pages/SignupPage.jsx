@@ -36,6 +36,7 @@ const SignupPage = () => {
 
 
             <section className="authorization__container">
+            <div className="authorization__form-wrapper">
                 <h4>New User</h4>
                 <DynamicForm 
                     inputFields={inputFields} 
@@ -43,6 +44,7 @@ const SignupPage = () => {
                     buttonText='Sign Up' 
                     showPrivacyPolicy={true}
                 />
+            </div>
             </section>
 
             <div className='authorization__redirect signup'>

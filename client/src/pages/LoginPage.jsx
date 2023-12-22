@@ -49,18 +49,22 @@ const LoginPage = () => {
             <ReturnArrow to='/' />
             
             <section className="authorization__container">
-                <h4>Log in</h4>
-                <DynamicForm 
-                    inputFields={inputFields} 
-                    handleSubmit={handleSubmitwithEmail} 
-                    showForgotPassword={true} 
-                    buttonText='Log in' 
-                />
-                <Button onClick={handleGoogleSignIn} type='submit' text={'Sign in with Google'} showGoogleIcon={true} />
-                <div className='authorization__redirect'>
-                    <p>Not have any account?</p>
-                    <Link className='redirect-link' to="/signup">Sign Up</Link>
-                </div>
+               <div className="authorization__form-wrapper">
+                    <h4>Log in</h4>
+                    <DynamicForm 
+                        inputFields={inputFields} 
+                        handleSubmit={handleSubmitwithEmail} 
+                        showForgotPassword={true} 
+                        buttonText='Log in' 
+                        backgroundColor= 'black'
+                        color= 'white'
+                    />
+                    <Button onClick={handleGoogleSignIn} type='submit' text={'Sign in with Google'} showGoogleIcon={true} />
+                    <div className='authorization__redirect'>
+                        <p>Not have any account?</p>
+                        <Link className='redirect-link' to="/signup">Sign Up</Link>
+                    </div>
+               </div>
             </section>
             
         </main>

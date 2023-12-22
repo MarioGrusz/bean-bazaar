@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom';
 import Button from '../Button/Button';
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
-const DynamicForm = ({ inputFields, handleSubmit, showForgotPassword, showPrivacyPolicy, buttonText, showLogin }) => {
+const DynamicForm = (props) => {
+
+  const { inputFields, handleSubmit, showForgotPassword, showPrivacyPolicy, buttonText, showLogin, backgroundColor, color } = props;
 
  const [formData, setFormData] = useState({});
  const [visible, setVisible] = useState(false);
@@ -80,7 +82,7 @@ const DynamicForm = ({ inputFields, handleSubmit, showForgotPassword, showPrivac
        </p>
      )}
 
-     <Button onClick={onSubmit} type='submit' text={buttonText} marginTop={'3rem'} />
+     <Button onClick={onSubmit} type='submit' text={buttonText} marginTop={'3rem'} backgroundColor={backgroundColor} color={color} />
    </form>
  );
 }

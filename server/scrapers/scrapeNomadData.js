@@ -3,9 +3,6 @@ import url from 'url';
 import extractCoffeeOrigin from "../utils/extractCoffeeOrigin.js";
 
 
-//refactored https://www.phind.com/search?cache=tq9hxz0nk4f3pyzyxop868kl
-
-
 const getNomadCoffeeProductData = async () => {
 
     const productData = [];

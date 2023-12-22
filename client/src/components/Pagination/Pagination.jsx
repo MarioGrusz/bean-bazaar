@@ -27,7 +27,8 @@ const Pagination = ({ coffeeItems ,page ,total , limit, setPage }) => {
             previousLabel={<AiFillCaretLeft 
               className={`arrow${page > 1 ? "" : " disable"}`} />}
             nextLabel={<AiFillCaretRight className={page < totalPages ? "" : "disable"} />}
-            breakLabel={"..."}
+            //breakLabel={"..."}
+            breakLabel={<span className="ellipsis">...</span>}
 
 
             pageCount={totalPages}
@@ -40,10 +41,8 @@ const Pagination = ({ coffeeItems ,page ,total , limit, setPage }) => {
             nextLinkClassName="page-num"
             breakLinkClassName="page-num"
             activeLinkClassName="active"
-            //page={page - 1}
             forcePage={page -1}
             activeClassName="active"
-            // disableInitialCallback={true}
           />
       )}
     </figure>

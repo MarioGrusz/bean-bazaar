@@ -33,13 +33,15 @@ const ResetPassword = () => {
             <ReturnArrow to="/" />
 
             <section className="authorization__container">
-                <h4>Reset Password</h4>
-                <DynamicForm 
-                    inputFields={inputFields} 
-                    handleSubmit={handleResetPassword}  
-                    buttonText='Reset' 
-                    showLogin={true}
-                />
+                <div className="authorization__form-wrapper">
+                    <h4>Reset Password</h4>
+                    <DynamicForm 
+                        inputFields={inputFields} 
+                        handleSubmit={handleResetPassword}  
+                        buttonText='Reset' 
+                        showLogin={true}
+                    />
+                </div>
             </section>
         </main>
     )

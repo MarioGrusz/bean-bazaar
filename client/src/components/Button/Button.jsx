@@ -1,10 +1,14 @@
 import './index.scss';
 
 
-const Button = ({ onClick, disabled, type, text, showGoogleIcon, marginTop }) => {
+const Button = (props) => {
+
+    const { onClick, disabled, type, text, showGoogleIcon, marginTop, backgroundColor, color } = props
 
     const buttonStyle = {
-        marginTop : marginTop 
+        marginTop : marginTop,
+        backgroundColor: backgroundColor,
+        color: color,
     };
 
     return (

@@ -27,6 +27,11 @@
   }
 }
 
+.ellipsis {
+  pointer-events: none;
+  z-index: 10000;
+}
+
 .page-num.active {
   background-color: $primaryBlackColor;
   border-color: $primaryBlackColor;
