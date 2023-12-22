@@ -140,15 +140,11 @@ AUTHORIZATION PAGES
   justify-content: center;
   pointer-events: all;
 
-  border: 1px solid red;
-
   &__container {
     height: 100vh;
     padding: 3% 25%;
     text-align: center;
     position: relative;
-
-    border: 1px solid green;
 
     display: flex;
     justify-content: center;
@@ -216,7 +212,15 @@ AUTHORIZATION PAGES
   }
 
   .signup {
-    margin-top: -1rem;
+    margin-top: -3.5rem;
+
+    @include mq(tablet-wide, max) {
+      margin-top: -1.5rem;
+    }
+
+    @include mq(phone, max) {
+      margin-top: -2.5rem;
+    }
   }
 }
 
