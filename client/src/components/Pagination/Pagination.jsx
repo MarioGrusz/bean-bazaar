@@ -11,7 +11,6 @@ const Pagination = ({ coffeeItems ,page ,total , limit, setPage }) => {
   const handlePageClick = (data) => {
     const selectedPage = data.selected + 1;
     setPage(selectedPage);
-    localStorage.setItem('currentPage', selectedPage)  
   };
 
 

@@ -18,25 +18,35 @@ import { useEffect, useRef, useState } from 'react';
 const Home = () => {
 
     const { user, token } = UserAuth();
+    const searchParams = new URLSearchParams(window.location.search)
     const navigate = useNavigate();
-    const [page, setPage] = useState(1);
-    const [sort, setSort] = useState('');   
-    const [search, setSearch] = useState('');
-    const [isNew, setIsNew] = useState(false);
+    const [page, setPage] = useState(Number(searchParams.get('page')) || 1);
+    const [sort, setSort] = useState(searchParams.get('sort') || '');   
+    const [search, setSearch] = useState(searchParams.get('search') || '');
+    const [isNew, setIsNew] = useState(searchParams.get('isNew') === 'true'); 
+    const [filters, setFilters] = useState(JSON.parse(searchParams.get('filters')) || {
+        roastery: [],
+        origin: [],
+    });
     const [showFilterSidebar, setShowFilterSidebar] = useState(false);
     const [heartFill, setHeartFill] = useState(false);
     const roasteryValuesRef = useRef([]);
     const originValuesRef = useRef([]);
     const [checkedItems, setCheckedItems] = useState([]);
-    const [filters, setFilters] = useState({
-        roastery: [],
-        origin: [],
-    });
+    
+
 
     useEffect(() => {
-        const storedPage = localStorage.getItem('currentPage');
-        storedPage !== null ? setPage(parseInt(storedPage)) : setPage(1)     
-    }, [])
+        const searchParams = new URLSearchParams(window.location.search)
+        searchParams.set('page', String(page));
+        searchParams.set('filters', JSON.stringify(filters));
+        searchParams.set('search', String(search));
+        searchParams.set('sort', String(sort));
+        searchParams.set('isNew', String(isNew));  
+        window.history.replaceState(null, '', `?${searchParams.toString()}`)  
+
+    },[page, search, sort, isNew, filters])
+
 
 
     useEffect(() => {
