@@ -13,9 +13,9 @@ User can explore a wide range of coffee beans from various sources, all in one p
 
 Users can create their own accounts, allowing them to personalize their experience and save their preferences. The registration process is straightforward and secure, utilizing Firebase's authentication.
 
-### Whitelist Functionality
+### Wishlist Functionality
 
-Users have the ability to add specific items to their whitelist. This feature allows users to keep track of their favorite coffee beans and easily find them in the future.
+Users have the ability to add specific items to their wishlist. This feature allows users to keep track of their favorite coffee beans and easily find them in the future.
 
 ### Weekly Scraped Items
 
@@ -70,8 +70,8 @@ The client directory contains the React application. The structure includes:
 
 ## Technologies Used
 
-Client : Vite, React, React Router, React Query, Firebase.
-Server: Node, Express, Mongodb, Mongoose, Firebase-Admin Puppeteer, Nodemailer.
+* Client : Vite, React, React Router, React Query, Firebase.
+* Server: Node, Express, Mongodb, Mongoose, Firebase-Admin Puppeteer, Nodemailer.
 
 ## Deployment
 
