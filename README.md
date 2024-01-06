@@ -24,8 +24,8 @@ Every week, the application automatically scrapes new data from various online c
 ### New Arrivals Tag
 New arrivals are marked with a 'new' tag, making it easy for users to spot what's new and exciting in the coffee bean market.
 
-### Navigation and Sorting
-The application is designed to be user-friendly, with intuitive navigation and sorting capabilities. Users can easily navigate through the site, sort items by origin or roastery, and filter the listings based on their preferences.
+### Filtering and Sorting
+The application is designed to be user-friendly, with intuitive navigation. Users can easily sort, search items and filter them by origin or roastery.
 
 ### UI/UX Design Principles
 The application adheres to established UI/UX design principles to ensure a seamless and enjoyable user experience. The design is clean and uncluttered, with a focus on simplicity and ease of use. The color scheme is consistent and pleasing to the eye, and the layout is logical and intuitive.
