@@ -42,7 +42,7 @@ The client directory contains the React application. The structure includes:
 
 * src: main source code directory.
 * api: API service for making HTTP requests.
-* assets: has files such images.
+* **assets**: has files such images.
 * config: firebase configuration.
 * constant: constants for the live API endpoint.
 * context: react context for managing global state.
