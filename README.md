@@ -41,6 +41,7 @@ The project is divided into two main directories: client and server.
 The client directory contains the React application. The structure includes:
 
 ```
+📦 client
  ┣ 📂 src
  ┃ ┣ 📂 api
  ┃ ┣ 📂 assets
