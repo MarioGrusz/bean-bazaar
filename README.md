@@ -7,6 +7,32 @@ Using web scraping techniques, I've integrated data from different online coffee
 providing users with a comprehensive selection of coffee beans, including details like origin, flavor profiles, new arrivals. 
 User can explore a wide range of coffee beans from various sources, all in one place.
 
+## Features
+
+### User Account Creation
+
+Users can create their own accounts, allowing them to personalize their experience and save their preferences. The registration process is straightforward and secure, utilizing Firebase's authentication.
+
+### Whitelist Functionality
+
+Users have the ability to add specific items to their whitelist. This feature allows users to keep track of their favorite coffee beans and easily find them in the future.
+
+### Weekly Scraped Items
+
+Every week, the application automatically scrapes new data from various online coffee shops. This ensures that users always have access to the latest offerings, providing them with a fresh perspective on the world of coffee beans.
+
+### New Arrivals Tag
+New arrivals are marked with a 'new' tag, making it easy for users to spot what's new and exciting in the coffee bean market.
+
+### Navigation and Sorting
+The application is designed to be user-friendly, with intuitive navigation and sorting capabilities. Users can easily navigate through the site, sort items by origin or roastery, and filter the listings based on their preferences.
+
+### UI/UX Design Principles
+The application adheres to established UI/UX design principles to ensure a seamless and enjoyable user experience. The design is clean and uncluttered, with a focus on simplicity and ease of use. The color scheme is consistent and pleasing to the eye, and the layout is logical and intuitive.
+
+## Live Demo
+[Bean Bazaar](https://beanbazaar.netlify.app)
+
 ## Project Structure
 
 The project is divided into two main directories: client and server.
@@ -41,6 +67,11 @@ The client directory contains the React application. The structure includes:
 * utils: Utility functions and helpers.
 * index.js: Entry point for the server.
 * .env: Contains Firebase AdminSDK, Mongodb and Nodemailer
+
+## Technologies Used
+
+Client : Vite, React, React Router, React Query, Firebase.
+Server: Node, Express, Mongodb, Mongoose, Firebase-Admin Puppeteer, Nodemailer.
 
 ## Deployment
 
