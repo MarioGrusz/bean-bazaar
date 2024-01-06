@@ -77,19 +77,20 @@ The client directory contains the React application. The structure includes:
 
 ## Technologies Used
 
-[![Vite](https://img.shields.io/badge/Vite-blue?style=flat&logo=vite)](https://vitejs.dev/)
-[![React](https://img.shields.io/badge/React-blue?style=flat&logo=react)](https://reactjs.org/)
-[![React Router](https://img.shields.io/badge/React_Router-blue?style=flat&logo=react-router)](https://reactrouter.com/)
-[![React Query](https://img.shields.io/badge/React_Query-blue?style=flat&logo=react-query)](https://react-query.tanstack.com/)
-[![Firebase](https://img.shields.io/badge/Firebase-blue?style=flat&logo=firebase)](https://firebase.google.com/)
+<img alt="Vite" src="https://img.shields.io/badge/-Vite-646CFF?logo=vite&logoColor=white&style=for-the-badge">
+<img alt="React" src="https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=white&style=for-the-badge">
+<img alt="React Router" src="https://img.shields.io/badge/-React_Router-CA4245?logo=react-router&logoColor=white&style=for-the-badge">
+<img alt="React Query" src="https://img.shields.io/badge/-React_Query-000000?logo=react-query&logoColor=white&style=for-the-badge">
+<img alt="Firebase" src="https://img.shields.io/badge/-Firebase-FFCA28?logo=firebase&logoColor=black&style=for-the-badge">
 
-[![Node.js](https://img.shields.io/badge/Node.js-brightgreen?style=flat&logo=node.js)](https://nodejs.org/)
-[![Express](https://img.shields.io/badge/Express-brightgreen?style=flat&logo=express)](https://expressjs.com/)
-[![MongoDB](https://img.shields.io/badge/MongoDB-brightgreen?style=flat&logo=mongodb)](https://www.mongodb.com/)
-[![Mongoose](https://img.shields.io/badge/Mongoose-brightgreen?style=flat&logo=mongoose)](https://mongoosejs.com/)
-[![Firebase Admin](https://img.shields.io/badge/Firebase_Admin-brightgreen?style=flat&logo=firebase)](https://firebase.google.com/)
-[![Puppeteer](https://img.shields.io/badge/Puppeteer-brightgreen?style=flat&logo=puppeteer)](https://pptr.dev/)
-[![Nodemailer](https://img.shields.io/badge/Nodemailer-brightgreen?style=flat&logo=nodemailer)](https://nodemailer.com/)
+<img alt="Node.js" src="https://img.shields.io/badge/-Node.js-339933?logo=node-dot-js&logoColor=white&style=for-the-badge">
+<img alt="Express" src="https://img.shields.io/badge/-Express-000000?logo=express&logoColor=white&style=for-the-badge">
+<img alt="MongoDB" src="https://img.shields.io/badge/-MongoDB-47A248?logo=mongoDB&logoColor=white&style=for-the-badge">
+<img alt="Mongoose" src="https://img.shields.io/badge/-Mongoose-880000?logoColor=white&style=for-the-badge">
+<img alt="Firebase Admin" src="https://img.shields.io/badge/-Firebase_Admin-FFCA28?logo=firebase&logoColor=black&style=for-the-badge">
+<img alt="Puppeteer" src="https://img.shields.io/badge/-Puppeteer-40B5A4?logo=puppeteer&logoColor=white&style=for-the-badge">
+<img alt="Nodemailer" src="https://img.shields.io/badge/-Nodemailer-009CAB?logo=nodemailer&logoColor=white&style=for-the-badge">
+
 
 
 ## Deployment
