@@ -78,6 +78,8 @@ The client directory contains the React application. The structure includes:
 ## Technologies Used
 
 * Client : Vite, React, React Router, React Query, Firebase.
+* ![Vite](https://img.shields.io/badge/Vite-2.7.11-blue?style=flat&logo=vite)
+
 * Server: Node, Express, Mongodb, Mongoose, Firebase-Admin, Puppeteer, Nodemailer.
 
 ## Deployment
