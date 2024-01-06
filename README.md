@@ -100,7 +100,7 @@ Server
 Client 
 
 ```bash
-  npm client
+  cd client
 ```
 
 ```bash
