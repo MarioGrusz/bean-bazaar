@@ -60,17 +60,20 @@ The client directory contains the React application. The structure includes:
 
 
 ### Server Directory
+```
+📦 server
+┣ 📂 config
+┣ 📂 controllers
+┣ 📂 middleware
+┣ 📂 models
+┣ 📂 routes
+┣ 📂 scrapers
+┣ 📂 services
+┣ 📂 utils
+┣ 📜 index.js
+┣ 📜 .env
+```
 
-* **config**: Firebase Admin and Mongodb configuration.
-* **controllers**: modules that handle requests from routes.
-* **middleware**: functions that process HTTP requests before reaching the route handlers.
-* **models**: data models or schemas used to interact with the database.
-* **routes**: API routes.
-* **scrapers**: functions responsible for web scraping.
-* **services**: contains logic that may be shared across controllers.
-* **utils**: utility functions and helpers.
-* **index.js**: entry point for the server.
-* **.env**: contains Firebase AdminSDK, Mongodb and Nodemailer configuration
 
 ## Technologies Used
 
