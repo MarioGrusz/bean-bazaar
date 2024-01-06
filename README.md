@@ -134,7 +134,7 @@ To successfully run this project, you need to create accounts on MongoDB and Fir
 
 * Create a new database user with a username and password. Note down the credentials as you will need them later to connect your application to MongoDB.
 
-* In the server/.env file, update the MONGODB_URI variable with your MongoDB connection string. Replace <password> with the password of the database user you just created.
+* In the server/.env file, update the MONGODB_URL variable with your MongoDB connection string. Replace <password> with the password of the database user you just created.
 
 ### Firebase
 
