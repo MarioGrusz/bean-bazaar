@@ -40,33 +40,33 @@ The project is divided into two main directories: client and server.
 ### Client Directory
 The client directory contains the React application. The structure includes:
 
-* src: main source code directory.
-* api: API service for making HTTP requests.
+* **src**: main source code directory.
+* **api**: API service for making HTTP requests.
 * **assets**: has files such images.
-* config: firebase configuration.
-* constant: constants for the live API endpoint.
-* context: react context for managing global state.
-* components: react components.
-* .env: contains Firebase configuration.
-* index.js: the entry point of the React application.
-* pages: components representing distinct pages in the application.
-* reactQueryHooks: react query hooks for handling data fetching.
-* styles: contains SCSS files for styling the components.
-* utils: functions and helpers for general application use.
+* **config**: firebase configuration.
+* **constant**: constants for the live API endpoint.
+* **context**: react context for managing global state.
+* **components**: react components.
+* **.env**: contains Firebase configuration.
+* **index.js**: the entry point of the React application.
+* **pages**: components representing distinct pages in the application.
+* **reactQueryHooks**: react query hooks for handling data fetching.
+* **styles**: contains SCSS files for styling the components.
+* **utils**: functions and helpers for general application use.
 
 
 ### Server Directory
 
-* config: Firebase Admin and Mongodb configuration.
-* controllers: modules that handle requests from routes.
-* middleware: functions that process HTTP requests before reaching the route handlers.
-* models: data models or schemas used to interact with the database.
-* routes: API routes.
-* scrapers: functions responsible for web scraping.
-* services: contains logic that may be shared across controllers.
-* utils: utility functions and helpers.
-* index.js: entry point for the server.
-* .env: contains Firebase AdminSDK, Mongodb and Nodemailer configuration
+* **config**: Firebase Admin and Mongodb configuration.
+* **controllers**: modules that handle requests from routes.
+* **middleware**: functions that process HTTP requests before reaching the route handlers.
+* **models**: data models or schemas used to interact with the database.
+* **routes**: API routes.
+* **scrapers**: functions responsible for web scraping.
+* **services**: contains logic that may be shared across controllers.
+* **utils**: utility functions and helpers.
+* **index.js**: entry point for the server.
+* **.env**: contains Firebase AdminSDK, Mongodb and Nodemailer configuration
 
 ## Technologies Used
 
