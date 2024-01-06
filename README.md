@@ -40,31 +40,22 @@ The project is divided into two main directories: client and server.
 ### Client Directory
 The client directory contains the React application. The structure includes:
 
-```📦 your-project-name
+```
  ┣ 📂 src
  ┃ ┣ 📂 api
- ┃ ┃ ┗ 📜 api-service.js
  ┃ ┣ 📂 assets
- ┃ ┃ ┗ 📜 image1.jpg
  ┃ ┣ 📂 config
- ┃ ┃ ┗ 📜 firebase-config.js
  ┃ ┣ 📂 constants
- ┃ ┃ ┗ 📜 api-endpoints.js
  ┃ ┣ 📂 context
- ┃ ┃ ┗ 📜 global-context.js
  ┃ ┣ 📂 components
- ┃ ┃ ┗ 📜 component1.js
+ ┃ ┣ 📂 pages
+ ┃ ┣ 📂 reactQueryHooks
+ ┃ ┣ 📂 styles
+ ┃ ┗ 📂 utils
  ┃ ┣ 📜 .env
  ┃ ┣ 📜 index.js
- ┃ ┣ 📂 pages
- ┃ ┃ ┗ 📜 page1.js
- ┃ ┣ 📂 reactQueryHooks
- ┃ ┃ ┗ 📜 data-fetching-hooks.js
- ┃ ┣ 📂 styles
- ┃ ┃ ┗ 📜 component-styles.scss
- ┃ ┗ 📂 utils
- ┃   ┗ 📜 helper-functions.js
- ┗ 📜 README.md```
+ ┗ 📜 README.md
+```
 
 
 ### Server Directory
