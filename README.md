@@ -77,10 +77,23 @@ The client directory contains the React application. The structure includes:
 
 ## Technologies Used
 
-* Client : Vite, React, React Router, React Query, Firebase.
-* ![Vite](https://img.shields.io/badge/Vite-2.7.11-blue?style=flat&logo=vite)
+* Client : 
+[![Vite](https://img.shields.io/badge/Vite-2.7.11-blue?style=flat&logo=vite)](https://vitejs.dev/)
+[![React](https://img.shields.io/badge/React-17.0.2-blue?style=flat&logo=react)](https://reactjs.org/)
+[![React Router](https://img.shields.io/badge/React_Router-5.2.0-blue?style=flat&logo=react-router)](https://reactrouter.com/)
+[![React Query](https://img.shields.io/badge/React_Query-3.28.0-blue?style=flat&logo=react-query)](https://react-query.tanstack.com/)
+[![Firebase](https://img.shields.io/badge/Firebase-Latest-blue?style=flat&logo=firebase)](https://firebase.google.com/)
 
-* Server: Node, Express, Mongodb, Mongoose, Firebase-Admin, Puppeteer, Nodemailer.
+
+
+* Server:
+[![Node.js](https://img.shields.io/badge/Node.js-LTS-brightgreen?style=flat&logo=node.js)](https://nodejs.org/)
+[![Express](https://img.shields.io/badge/Express-4.17.1-brightgreen?style=flat&logo=express)](https://expressjs.com/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-Latest-brightgreen?style=flat&logo=mongodb)](https://www.mongodb.com/)
+[![Mongoose](https://img.shields.io/badge/Mongoose-5.12.0-brightgreen?style=flat&logo=mongoose)](https://mongoosejs.com/)
+[![Firebase Admin](https://img.shields.io/badge/Firebase_Admin-Latest-brightgreen?style=flat&logo=firebase)](https://firebase.google.com/)
+[![Puppeteer](https://img.shields.io/badge/Puppeteer-2.1.1-brightgreen?style=flat&logo=puppeteer)](https://pptr.dev/)
+[![Nodemailer](https://img.shields.io/badge/Nodemailer-6.7.2-brightgreen?style=flat&logo=nodemailer)](https://nodemailer.com/)
 
 ## Deployment
 
