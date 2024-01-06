@@ -71,7 +71,7 @@ The client directory contains the React application. The structure includes:
 ## Technologies Used
 
 * Client : Vite, React, React Router, React Query, Firebase.
-* Server: Node, Express, Mongodb, Mongoose, Firebase-Admin Puppeteer, Nodemailer.
+* Server: Node, Express, Mongodb, Mongoose, Firebase-Admin, Puppeteer, Nodemailer.
 
 ## Deployment
 
@@ -154,7 +154,7 @@ To successfully run this project, you need to create accounts on MongoDB and Fir
 
 * In the server/.env file, update the FIREBASE_ADMIN_SDK variable with the content of the downloaded JSON file converted into a JSON string.
 
-* On the client side, navigate to the Firebase console, click on "Project settings", then "Your apps", and select your app. In the "Firebase SDK snippet" section, select "Config". Copy the generated code and paste it into your client/.env file, replacing VITE_APP_FIREBASE_API_KEY, VITE_FIREBASE_AUTH_DOMAIN, VITE_FIREBASE_PROJECT_ID, VITE_FIREBASE_STORAGE_BUCKET, VITE_FIREBASE_MESSAGING_SENDER_ID, and VITE_FIREBASE_APP_ID with the corresponding values from the copied code.
+* Then client side, navigate to the Firebase console, click on "Project settings", then "Your apps", and select your app. In the "Firebase SDK snippet" section, select "Config". Copy the generated code and paste it into your client/.env file, replacing VITE_APP_FIREBASE_API_KEY, VITE_FIREBASE_AUTH_DOMAIN, VITE_FIREBASE_PROJECT_ID, VITE_FIREBASE_STORAGE_BUCKET, VITE_FIREBASE_MESSAGING_SENDER_ID, and VITE_FIREBASE_APP_ID with the corresponding values from the copied code.
 
 ## License
 
