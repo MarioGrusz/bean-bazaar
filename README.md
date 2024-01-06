@@ -40,7 +40,7 @@ The project is divided into two main directories: client and server.
 ### Client Directory
 The client directory contains the React application. The structure includes:
 
-📦 your-project-name
+```📦 your-project-name
  ┣ 📂 src
  ┃ ┣ 📂 api
  ┃ ┃ ┗ 📜 api-service.js
@@ -64,7 +64,7 @@ The client directory contains the React application. The structure includes:
  ┃ ┃ ┗ 📜 component-styles.scss
  ┃ ┗ 📂 utils
  ┃   ┗ 📜 helper-functions.js
- ┗ 📜 README.md
+ ┗ 📜 README.md```
 
 
 ### Server Directory
