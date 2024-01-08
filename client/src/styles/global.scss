@@ -169,12 +169,15 @@ AUTHORIZATION PAGES
   }
 
   &__form-wrapper {
-    background-color: white;
     padding: 2rem 1.5rem;
     border-radius: 4px;
     width: 60%;
     min-width: 16rem;
     height: auto;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
+      rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
+      rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
 
     @include mq(desktop, max) {
       width: 100%;
