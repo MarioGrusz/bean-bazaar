@@ -1,5 +1,17 @@
 # Bean Bazaar 
 
+## Table of Contents
+
+- [Project Overview](#project-overview)
+- [Features](#features)
+- [Live Demo](#live-demo)
+- [Project Structure](#project-structure)
+- [Technologies Used](#technologies-used)
+- [Deployment](#deployment)
+- [How to Clone and Run the Project](#how-to-clone-and-run-the-project)
+- [Setting Up Accounts on MongoDB and Firebase](#setting-up-accounts-on-mongodb-and-firebase)
+- [License](#license)
+
 ## Project Overview
 
 This is app created for coffee enthusiasts that helps to discover, browse, compare coffee beans. 
