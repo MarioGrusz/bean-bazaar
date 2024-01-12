@@ -44,7 +44,7 @@
     border-radius: $borderRadius;
     padding: 0 0.2rem;
 
-    @include mq(phone, max) {
+    @include mq(tablet, max) {
       padding: 0;
       margin: 0;
       border: none;
@@ -78,14 +78,14 @@
 
   &__button:nth-child(1),
   &__button:nth-child(2) {
-    @include mq(phone, max) {
+    @include mq(tablet, max) {
       display: none;
     }
   }
 
   &__button:nth-child(3),
   &__button:nth-child(4) {
-    @include mq(tablet-small) {
+    @include mq(tablet) {
       display: none;
     }
   }

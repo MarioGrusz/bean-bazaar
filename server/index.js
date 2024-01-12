@@ -1,6 +1,6 @@
 /**
- * Project Name: BEAN SEARCHER
- * Description: '______________'.
+ * Project Name: BEAN BAZAAR
+ * Description: 'App that helps to discover, browse, compare coffee beans'.
  *
  * Author: Mariusz Gruszczynski
  * Email: mario.gruszczynski@gmail.com
