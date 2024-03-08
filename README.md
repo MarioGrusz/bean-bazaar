@@ -19,8 +19,6 @@ Using web scraping techniques, I've integrated data from different online coffee
 providing users with a comprehensive selection of coffee beans, including details like origin, flavor profiles, new arrivals.
 User can explore a wide range of coffee beans from various sources, all in one place.
 
-![Bean Bazaar](./src/assets/laptop_bean.jpg)
-
 ## Features
 
 ### User Account Creation
