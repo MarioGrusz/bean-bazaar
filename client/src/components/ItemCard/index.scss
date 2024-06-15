@@ -27,7 +27,7 @@
     background-color: transparent;
 
     .image-wrapper {
-      height: 18rem;
+      //height: 18rem;
       position: relative;
       border-radius: 4px;
       overflow: hidden;
@@ -40,6 +40,7 @@
       margin: 0 0 1em;
       box-shadow: none;
       object-fit: cover;
+      border-radius: 4px; //added now
     }
 
     .product-info-wrapper {
